@@ -7,7 +7,14 @@ RED:=\033[0;31m
 BLUE=\033[0;34m
 default_colour=\033[0m
 
-SRC_FILES:=  main4.c 
+SRC_FILES:=  main.c\
+				calc_rays.c \
+				close_win.c \
+				init_cub.c \
+				keys.c \
+				player_mov.c \
+				calc_dist_wall.c \
+				utils.c\
 
 MAKE:= make -j -C
 LIBFT_DIR:= libs/libft
@@ -18,7 +25,7 @@ MLX:= -L libs/mlx -lmlx -Ilmlx -lXext -lX11 -lm #-lm -lXext -lX11#libs/mlx/libml
 #-L mlx -lmlx -Ilmlx -lXext -lX11 -lm
 OBJ_FILES:= $(patsubst %.c, %.o, $(SRC_FILES))
 
-SRC_PATH:= src/
+SRC_PATH:= srcs/
 OBJ_PATH:= obj/
 
 SRC = $(addprefix $(SRC_PATH), $(SRC_FILES))
