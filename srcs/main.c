@@ -13,14 +13,17 @@
 #include "../libs/cub.h"
 #include "../libs/mlx/mlx.h"
 
-void draw_map(t_cub *game)
+void	draw_map(t_cub *game)
 {
-    char **map = game->map;
-    int color = 0x0000FF;
-    for(int y = 0; map[y]; y++)
-        for(int x = 0; map[y][x]; x++)
-            if(map[y][x] == '1')
-                put_square(game, x * 5, y * 5, 5, 0xff0000);
+	char	**map;
+	int		color;
+
+	map = game->map;
+	color = 0x0000FF;
+	for (int y = 0; map[y]; y++)
+		for (int x = 0; map[y][x]; x++)
+			if (map[y][x] == '1')
+				put_square(game, x * 5, y * 5, 5, 0xff0000);
 }
 
 void	cast_rays(t_cub *cub)
@@ -42,13 +45,18 @@ void	cast_rays(t_cub *cub)
 	}
 }
 
-static void show_rays(t_cub *cub, float start_x)
+static void	show_rays(t_cub *cub, float start_x)
 {
-	float cos_ = cos(start_x);
-	float sin_ = sin(start_x);
-	float ray_x = cub->px / 5;
-	float ray_y = cub->py / 5;
-	while(!colision(ray_x, ray_y, cub, 1))
+	float	cos_;
+	float	sin_;
+	float	ray_x;
+	float	ray_y;
+
+	cos_ = cos(start_x);
+	sin_ = sin(start_x);
+	ray_x = cub->px / 5;
+	ray_y = cub->py / 5;
+	while (!colision(ray_x, ray_y, cub, 1))
 	{
 		put_pixel(cub, ray_x, ray_y, 0xFFF);
 		ray_x += cos_;
@@ -58,15 +66,16 @@ static void show_rays(t_cub *cub, float start_x)
 
 int	draw_loop(t_cub *cub)
 {
-	int i;
+	int		i;
+	float	fraction;
 
 	i = 0;
 	move_player(cub);
 	cast_rays(cub);
 	draw_map(cub);
-	put_square(cub, cub->px / 5,cub->py / 5, 5, 0xfff000);
-	float fraction = PI/3/WIDTH;
-	while(i < WIDTH)
+	put_square(cub, cub->px / 5, cub->py / 5, 5, 0xfff000);
+	fraction = PI / 3 / WIDTH;
+	while (i < WIDTH)
 	{
 		if (i % 50 == 0)
 			show_rays(cub, cub->start_x);

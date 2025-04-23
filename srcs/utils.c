@@ -13,42 +13,33 @@
 #include "../libs/cub.h"
 #include "../libs/mlx/mlx.h"
 
-void put_square(t_cub *cub, int x, int y, int size, int color)
+void	put_square(t_cub *cub, int x, int y, int size, int color)
 {
-	
-	for (int  i = 0; i < size; i++)
-		put_pixel(cub, x + i , y, color);
-	
-	for (int  i = 0; i < size; i++)
-		put_pixel(cub, x  , y + i, color);
-	
-	for (int  i = 0; i < size; i++)
-		put_pixel(cub, x + i  , y + size, color);
-
-
-	for (int  i = 0; i < size; i++)
-		put_pixel(cub, x + size , y + i, color);
-
+	for (int i = 0; i < size; i++)
+		put_pixel(cub, x + i, y, color);
+	for (int i = 0; i < size; i++)
+		put_pixel(cub, x, y + i, color);
+	for (int i = 0; i < size; i++)
+		put_pixel(cub, x + i, y + size, color);
+	for (int i = 0; i < size; i++)
+		put_pixel(cub, x + size, y + i, color);
 }
 
-void put_pixel(t_cub *cub, int x, int y, int color)
+void	put_pixel(t_cub *cub, int x, int y, int color)
 
 {
-	if(x >= WIDTH || y >= HEIGH || x < 0 || y < 0)
+	if (x >= WIDTH || y >= HEIGH || x < 0 || y < 0)
 
-        return;
+		return ;
 	int index = y * cub->size_line + x * cub->bpp / 8;
 
-//	mlx_pixel_put(cub->mlx_con, cub->mlx_win, x, y, color);
+	//	mlx_pixel_put(cub->mlx_con, cub->mlx_win, x, y, color);
 
 	cub->imgs[0].addr[index] = color & 0xFF;
-    cub->imgs[0].addr[index + 1] = (color >> 8) & 0xFF;
+	cub->imgs[0].addr[index + 1] = (color >> 8) & 0xFF;
 
-    cub->imgs[0].addr[index + 2] = (color >> 16) & 0xFF;
-
-
+	cub->imgs[0].addr[index + 2] = (color >> 16) & 0xFF;
 }
-
 
 void	my_mlx_pixel_put(t_img *img, int x, int y, int color)
 {

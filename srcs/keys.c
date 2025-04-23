@@ -56,26 +56,26 @@ int	key_release(int kcode, t_cub *cub)
 /* add the collision function here to stop the player from passing walls */
 void	move_player_utils(t_cub *cub, float cos, float sin)
 {
-	if ((cub->k_up) && !colision(cub->px + cos * cub->speed, cub->py
-			+ sin * cub->speed, cub, 0))
+	if ((cub->k_up) && !colision(cub->px + cos * cub->speed, cub->py + sin
+			* cub->speed, cub, 0))
 	{
 		cub->px += cos * cub->speed;
 		cub->py += sin * cub->speed;
 	}
-	if ((cub->k_down) && !colision(cub->px - cos * cub->speed, cub->py
-			- sin * cub->speed, cub, 0))
+	if ((cub->k_down) && !colision(cub->px - cos * cub->speed, cub->py - sin
+			* cub->speed, cub, 0))
 	{
 		cub->px -= cos * cub->speed;
 		cub->py -= sin * cub->speed;
 	}
-	if ((cub->k_right) && !colision(cub->py
-			- sin * cub->speed, cub->px + cos * cub->speed, cub, 0))
+	if ((cub->k_right) && !colision(cub->py - sin * cub->speed, cub->px + cos
+			* cub->speed, cub, 0))
 	{
 		cub->px -= sin * cub->speed;
 		cub->py += cos * cub->speed;
 	}
-	if ((cub->k_left) && !colision(cub->px + sin * cub->speed, cub->py
-			- cos * cub->speed, cub, 0))
+	if ((cub->k_left) && !colision(cub->px + sin * cub->speed, cub->py - cos
+			* cub->speed, cub, 0))
 	{
 		cub->px += sin * cub->speed;
 		cub->py -= cos * cub->speed;

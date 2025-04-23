@@ -21,7 +21,7 @@ void	ft_calc_ray_side(t_cub *cub, t_rays **ray)
 	if (rays->raydirx < 0)
 	{
 		// esquerda
-		rays->stepx = -1;// valor para
+		rays->stepx = -1; // valor para
 		rays->sidedistx = (cub->px - rays->mapx) * rays->deltadistx;
 	}
 	else
@@ -31,12 +31,12 @@ void	ft_calc_ray_side(t_cub *cub, t_rays **ray)
 	}
 	if (rays->raydiry < 0)
 	{
-		rays->stepy = -1;// baixo
+		rays->stepy = -1; // baixo
 		rays->sidedisty = (cub->py - rays->mapy) * rays->deltadisty;
 	}
 	else
 	{
-		rays->stepy = 1;// cima
+		rays->stepy = 1; // cima
 		rays->sidedisty = (rays->mapy + 1.0 - cub->py) * rays->deltadisty;
 	}
 }
@@ -50,16 +50,16 @@ bool	colision(float px, float py, t_cub *cub, int flag)
 	y = 0;
 	if (flag == 1) // para mini mapa
 	{
-		x = (px /5);
-		y = (py /5);
+		x = (px / 5);
+		y = (py / 5);
 		if (cub->map[y][x] == '1')
 			return (true);
 		return (false);
 	}
 	else
 	{
-		x = (px /BLOCK);
-		y = (py /BLOCK);
+		x = (px / BLOCK);
+		y = (py / BLOCK);
 		if (cub->map[y][x] == '1')
 			return (true);
 		return (false);
@@ -88,7 +88,7 @@ void	ft_calc_dda(t_cub *cub, t_rays **ray)
 			rays->side = 1;
 		}
 		if (colision(rays->mapx, rays->mapy, cub, 0))
-		// Check for a collision (wall hit)
+			// Check for a collision (wall hit)
 			rays->hit = 1;
 	}
 }

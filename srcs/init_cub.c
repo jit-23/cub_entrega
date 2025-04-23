@@ -70,22 +70,22 @@ char	**get_map(void)
 void	init_textures(t_cub *cub)
 {
 	cub->imgs[0].img = mlx_new_image(cub->mlx_con, WIDTH, HEIGH);
-	cub->imgs[0].addr = mlx_get_data_addr(cub->imgs[0].img,
-			&cub->imgs[0].bpp, &cub->imgs[0].size_line, &cub->imgs[0].endian);
-	cub->imgs[1].img = mlx_xpm_file_to_image(cub->mlx_con,
-			"textures/NORTH.xpm", &(cub->imgs[1].x), &(cub->imgs[1].y));
-	cub->imgs[1].addr = mlx_get_data_addr(cub->imgs[1].img,
-			&cub->imgs[1].bpp, &cub->imgs[1].size_line, &cub->imgs[1].endian);
-	cub->imgs[2].img = mlx_xpm_file_to_image(cub->mlx_con,
-			"textures/SOUTH.xpm", &(cub->imgs[2].x), &(cub->imgs[2].y));
-	cub->imgs[2].addr = mlx_get_data_addr(cub->imgs[2].img,
-			&cub->imgs[2].bpp, &cub->imgs[2].size_line, &cub->imgs[2].endian);
-	cub->imgs[3].img = mlx_xpm_file_to_image(cub->mlx_con,
-			"textures/EAST.xpm", &(cub->imgs[3].x), &(cub->imgs[3].y));
-	cub->imgs[3].addr = mlx_get_data_addr(cub->imgs[3].img,
-			&cub->imgs[3].bpp, &cub->imgs[3].size_line, &cub->imgs[3].endian);
-	cub->imgs[4].img = mlx_xpm_file_to_image(cub->mlx_con,
-			"textures/WEST.xpm", &(cub->imgs[4].x), &(cub->imgs[4].y));
-	cub->imgs[4].addr = mlx_get_data_addr(cub->imgs[4].img,
-			&cub->imgs[4].bpp, &cub->imgs[4].size_line, &cub->imgs[4].endian);
+	cub->imgs[0].addr = mlx_get_data_addr(cub->imgs[0].img, &cub->imgs[0].bpp,
+			&cub->imgs[0].size_line, &cub->imgs[0].endian);
+	cub->imgs[1].img = mlx_xpm_file_to_image(cub->mlx_con, "textures/NORTH.xpm",
+			&(cub->imgs[1].x), &(cub->imgs[1].y));
+	cub->imgs[1].addr = mlx_get_data_addr(cub->imgs[1].img, &cub->imgs[1].bpp,
+			&cub->imgs[1].size_line, &cub->imgs[1].endian);
+	cub->imgs[2].img = mlx_xpm_file_to_image(cub->mlx_con, "textures/SOUTH.xpm",
+			&(cub->imgs[2].x), &(cub->imgs[2].y));
+	cub->imgs[2].addr = mlx_get_data_addr(cub->imgs[2].img, &cub->imgs[2].bpp,
+			&cub->imgs[2].size_line, &cub->imgs[2].endian);
+	cub->imgs[3].img = mlx_xpm_file_to_image(cub->mlx_con, "textures/EAST.xpm",
+			&(cub->imgs[3].x), &(cub->imgs[3].y));
+	cub->imgs[3].addr = mlx_get_data_addr(cub->imgs[3].img, &cub->imgs[3].bpp,
+			&cub->imgs[3].size_line, &cub->imgs[3].endian);
+	cub->imgs[4].img = mlx_xpm_file_to_image(cub->mlx_con, "textures/WEST.xpm",
+			&(cub->imgs[4].x), &(cub->imgs[4].y));
+	cub->imgs[4].addr = mlx_get_data_addr(cub->imgs[4].img, &cub->imgs[4].bpp,
+			&cub->imgs[4].size_line, &cub->imgs[4].endian);
 }
