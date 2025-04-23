@@ -6,7 +6,7 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 00:10:02 by fde-jesu          #+#    #+#             */
-/*   Updated: 2025/04/20 00:19:03 by fde-jesu         ###   ########.fr       */
+/*   Updated: 2025/04/23 17:16:08 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,70 +24,6 @@ void	close_window(void)
 	exit(0);
 }
 
-void	set_null_window_vars(t_cub *cub)
-{
-	cub->img_address = NULL;
-	cub->bpp = 0;
-	cub->size_line = 0;
-	cub->endian = 0;
-	cub->mlx_con = NULL;
-	cub->mlx_win = NULL;
-	cub->img = NULL;
-	cub->map_x = 0;
-	cub->map_y = 0;
-}
-
-void	set_null_key_vars(t_cub *cub)
-{
-	cub->k_plus = false;
-	cub->k_less = false;
-	cub->k_left = false;
-	cub->k_right = false;
-	cub->k_up = false;
-	cub->k_down = false;
-	cub->right_r = false;
-	cub->left_r = false;
-}
-
-void	set_null_player_vars(t_cub *cub)
-{
-	cub->fov = 0;
-	cub->pos = 0;
-	cub->map = NULL;
-	cub->dist = 0;
-	cub->cos = 0;
-	cub->sin = 0;
-	cub->px = 0;
-	cub->py = 0;
-	cub->angle = 0;
-	cub->speed = 0;
-	cub->direction = 0;
-}
-
-void	set_null_texture_vars(t_cub *cub, int i)
-{
-	cub->imgs[i].img = 0;
-	cub->imgs[i].addr = NULL;
-	cub->imgs[i].x = 0;
-	cub->imgs[i].y = 0;
-	cub->imgs[i].bpp = 0;
-	cub->imgs[i].size_line = 0;
-	cub->imgs[i].endian = 0;
-}
-
-void	set_null(t_cub *cub)
-{
-	int	i;
-
-	i = -1;
-	set_null_window_vars(cub);
-	set_null_player_vars(cub);
-	set_null_key_vars(cub);
-	while (++i < 2)
-		set_null_texture_vars(cub, i);
-	cub->rays = NULL;
-}
-
 void	init_keys(t_cub *cub)
 {
 	cub->k_up = false;
@@ -98,7 +34,7 @@ void	init_keys(t_cub *cub)
 	cub->k_less = false;
 	cub->left_r = false;
 	cub->right_r = false;
-	cub->angle = NORTH;
+	cub->angle = (3.14159 / 2);
 	cub->speed = 0.2;
 	cub->sin = 1;
 	cub->cos = 0;
@@ -129,4 +65,27 @@ char	**get_map(void)
 	map[17] = "111111111111111111111111111111";
 	map[18] = NULL;
 	return (map);
+}
+
+void	init_textures(t_cub *cub)
+{
+	cub->imgs[0].img = mlx_new_image(cub->mlx_con, WIDTH, HEIGH);
+	cub->imgs[0].addr = mlx_get_data_addr(cub->imgs[0].img,
+			&cub->imgs[0].bpp, &cub->imgs[0].size_line, &cub->imgs[0].endian);
+	cub->imgs[1].img = mlx_xpm_file_to_image(cub->mlx_con,
+			"textures/NORTH.xpm", &(cub->imgs[1].x), &(cub->imgs[1].y));
+	cub->imgs[1].addr = mlx_get_data_addr(cub->imgs[1].img,
+			&cub->imgs[1].bpp, &cub->imgs[1].size_line, &cub->imgs[1].endian);
+	cub->imgs[2].img = mlx_xpm_file_to_image(cub->mlx_con,
+			"textures/SOUTH.xpm", &(cub->imgs[2].x), &(cub->imgs[2].y));
+	cub->imgs[2].addr = mlx_get_data_addr(cub->imgs[2].img,
+			&cub->imgs[2].bpp, &cub->imgs[2].size_line, &cub->imgs[2].endian);
+	cub->imgs[3].img = mlx_xpm_file_to_image(cub->mlx_con,
+			"textures/EAST.xpm", &(cub->imgs[3].x), &(cub->imgs[3].y));
+	cub->imgs[3].addr = mlx_get_data_addr(cub->imgs[3].img,
+			&cub->imgs[3].bpp, &cub->imgs[3].size_line, &cub->imgs[3].endian);
+	cub->imgs[4].img = mlx_xpm_file_to_image(cub->mlx_con,
+			"textures/WEST.xpm", &(cub->imgs[4].x), &(cub->imgs[4].y));
+	cub->imgs[4].addr = mlx_get_data_addr(cub->imgs[4].img,
+			&cub->imgs[4].bpp, &cub->imgs[4].size_line, &cub->imgs[4].endian);
 }

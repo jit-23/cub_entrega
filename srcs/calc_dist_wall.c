@@ -6,28 +6,61 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 00:12:08 by fde-jesu          #+#    #+#             */
-/*   Updated: 2025/04/21 19:38:58 by fde-jesu         ###   ########.fr       */
+/*   Updated: 2025/04/23 17:13:40 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libs/cub.h"
 #include "../libs/mlx/mlx.h"
 
-void	calc_text_wall_pixel(t_cub *cub, t_rays **ray)
+void	calc_text_wall_pixel(t_cub *cub, t_rays **ray, int texture)
 {
 	t_rays	*rays;
 
 	rays = (*ray);
 	rays->xwall = fmod(rays->xwall, BLOCK) / BLOCK;
-	rays->texX = (int)((rays->xwall) * ((double)cub->imgs[0].x));
-	if ((rays->side == 0 && rays->rayDirX < 0))
-		rays->texX = cub->imgs[0].x - rays->texX - 1;
-	if (rays->side == 1 && rays->rayDirY > 0)
-		rays->texX = cub->imgs[0].x - rays->texX - 1;
-	rays->y = rays->drawStart;
-	rays->step = 1.0 * cub->imgs[0].y / rays->lineHeight;
-	rays->texPos = (rays->drawStart - HEIGH / 2 + rays->lineHeight / 2)
+	rays->tex_x = (int)((rays->xwall) * ((double)cub->imgs[texture].x));
+	if ((rays->side == 0 && rays->raydirx < 0))
+		rays->tex_x = cub->imgs[texture].x - rays->tex_x - 1;
+	if (rays->side == 1 && rays->raydiry > 0)
+		rays->tex_x = cub->imgs[texture].x - rays->tex_x - 1;
+	rays->y = rays->drawstart;
+	rays->step = 1.0 * cub->imgs[texture].y / rays->lineheight;
+	rays->texpos = (rays->drawstart - HEIGH / 2 + rays->lineheight / 2)
 		* rays->step;
+}
+
+void	handle_texture_calcs(t_cub *cub, t_rays **ray, int i)
+{
+	t_rays	*rays;
+
+	rays = (*ray);
+	if (cub->texture2apply == NORTH_TEXTURE)
+		calc_text_wall_pixel(cub, &rays, NORTH_TEXTURE);
+	else if (cub->texture2apply == SOUTH_TEXTURE)
+		calc_text_wall_pixel(cub, &rays, SOUTH_TEXTURE);
+	else if (cub->texture2apply == EAST_TEXTURE)
+		calc_text_wall_pixel(cub, &rays, EAST_TEXTURE);
+	else if (cub->texture2apply == WEST_TEXTURE)
+		calc_text_wall_pixel(cub, &rays, WEST_TEXTURE);
+}
+
+void	ft_calc_draw_limitations_for_walls(t_cub *cub, t_rays **ray, int i)
+{
+	t_rays	*rays;
+
+	rays = (*ray);
+	rays->lineheight = (BLOCK * HEIGH) / rays->perpwalldist;
+	rays->drawstart = -rays->lineheight / 2 + HEIGH / 2;
+	if (rays->drawstart < 0)
+		rays->drawstart = 0;
+	rays->drawend = rays->lineheight / 2 + HEIGH / 2;
+	if (rays->drawend >= HEIGH)
+		rays->drawend = HEIGH - 1;
+	if (rays->side == 0)
+		rays->xwall = cub->py + rays->perpwalldist * rays->raydiry;
+	else
+		rays->xwall = cub->px + rays->perpwalldist * rays->raydirx;
 }
 
 void	ft_calc_dist_wall(t_cub *cub, t_rays **ray, int i)
@@ -36,21 +69,23 @@ void	ft_calc_dist_wall(t_cub *cub, t_rays **ray, int i)
 
 	rays = (*ray);
 	if (rays->side == 0)
-		rays->perpWallDist = (rays->mapX - cub->px + (1 - rays->stepX) / 2)
-			/ rays->rayDirX;
+	{
+		rays->perpwalldist = (rays->mapx - cub->px + (1 - rays->stepx) / 2)
+			/ rays->raydirx;
+		if (rays->raydirx > 0)
+			cub->texture2apply = WEST_TEXTURE;
+		else
+			cub->texture2apply = EAST_TEXTURE;
+	}
 	else
-		rays->perpWallDist = (rays->mapY - cub->py + (1 - rays->stepY) / 2)
-			/ rays->rayDirY;
-	rays->lineHeight = (BLOCK * HEIGH) / rays->perpWallDist;
-	rays->drawStart = -rays->lineHeight / 2 + HEIGH / 2;
-	if (rays->drawStart < 0)
-		rays->drawStart = 0;
-	rays->drawEnd = rays->lineHeight / 2 + HEIGH / 2;
-	if (rays->drawEnd >= HEIGH)
-		rays->drawEnd = HEIGH - 1;
-	if (rays->side == 0)
-		rays->xwall = cub->py + rays->perpWallDist * rays->rayDirY;
-	else
-		rays->xwall = cub->px + rays->perpWallDist * rays->rayDirX;
-	calc_text_wall_pixel(cub, &rays);
+	{
+		rays->perpwalldist = (rays->mapy - cub->py + (1 - rays->stepy) / 2)
+			/ rays->raydiry;
+		if (rays->raydiry > 0)
+			cub->texture2apply = NORTH_TEXTURE;
+		else
+			cub->texture2apply = SOUTH_TEXTURE;
+	}
+	ft_calc_draw_limitations_for_walls(cub, &rays, i);
+	handle_texture_calcs(cub, &rays, i);
 }

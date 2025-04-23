@@ -6,7 +6,7 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 00:13:55 by fde-jesu          #+#    #+#             */
-/*   Updated: 2025/04/20 01:30:03 by fde-jesu         ###   ########.fr       */
+/*   Updated: 2025/04/23 18:02:23 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,22 +56,26 @@ int	key_release(int kcode, t_cub *cub)
 /* add the collision function here to stop the player from passing walls */
 void	move_player_utils(t_cub *cub, float cos, float sin)
 {
-	if ((cub->k_up))
+	if ((cub->k_up) && !colision(cub->px + cos * cub->speed, cub->py
+			+ sin * cub->speed, cub, 0))
 	{
 		cub->px += cos * cub->speed;
 		cub->py += sin * cub->speed;
 	}
-	if ((cub->k_down))
+	if ((cub->k_down) && !colision(cub->px - cos * cub->speed, cub->py
+			- sin * cub->speed, cub, 0))
 	{
 		cub->px -= cos * cub->speed;
 		cub->py -= sin * cub->speed;
 	}
-	if ((cub->k_right))
+	if ((cub->k_right) && !colision(cub->py
+			- sin * cub->speed, cub->px + cos * cub->speed, cub, 0))
 	{
 		cub->px -= sin * cub->speed;
 		cub->py += cos * cub->speed;
 	}
-	if ((cub->k_left))
+	if ((cub->k_left) && !colision(cub->px + sin * cub->speed, cub->py
+			- cos * cub->speed, cub, 0))
 	{
 		cub->px += sin * cub->speed;
 		cub->py -= cos * cub->speed;

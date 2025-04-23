@@ -15,6 +15,8 @@ SRC_FILES:=  main.c\
 				player_mov.c \
 				calc_dist_wall.c \
 				utils.c\
+				set_null.c\
+				draw_map.c
 
 MAKE:= make -j -C
 LIBFT_DIR:= libs/libft

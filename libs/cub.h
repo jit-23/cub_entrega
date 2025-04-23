@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cub.h                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/04/23 17:06:17 by fde-jesu          #+#    #+#             */
+/*   Updated: 2025/04/23 18:01:45 by fde-jesu         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef CUB_H
 # define CUB_H
 
@@ -26,17 +38,21 @@
 # define LESS 45
 # define PLUSS 61
 # define BLOCK 25
-
 # define PI 3.14159
-
 # define WIDTH 800
 # define HEIGH 600
 # define PIXEL 32
 
-# define NORTH -(3.14159 / 2)
-# define SOUTH (3.14159 / 2)
-# define WEST -(3.14159)
-# define EAST (3.14159)
+# define NORTH_TEXTURE 1
+# define SOUTH_TEXTURE 2
+# define WEST_TEXTURE 3
+# define EAST_TEXTURE 4
+
+
+//# define NORTH_DIR -(3.14159 / 2)
+//# define SOUTH_DIR (3.14159 / 2)
+//# define WEST_DIR -(3.14159)
+//# define EAST_DIR (3.14159)
 /* static float calc_dist(float x,float y)
 {
 	return (sqrt(x*x+y*y));
@@ -44,44 +60,44 @@
 
 typedef struct s_rays
 {
-	int		mapX;
-	int		mapY;
+	int		mapx;
+	int		mapy;
 	double	fov;
-	double	planeLength;
+	double	planelength;
 
-	double	dirX;
-	double	dirY;
+	double	dirx;
+	double	diry;
 
-	double	planeX;
-	double	planeY;
+	double	planex;
+	double	planey;
 
-	double	cameraX;
+	double	camerax;
 
-	double	rayDirX;
-	double	rayDirY;
+	double	raydirx;
+	double	raydiry;
 
-	double	deltaDistX;
-	double	deltaDistY;
+	double	deltadistx;
+	double	deltadisty;
 
-	double	sideDistX;
-	double	sideDistY;
+	double	sidedistx;
+	double	sidedisty;
 
-	int		stepX;
-	int		stepY;
+	int		stepx;
+	int		stepy;
 
 	int		hit;
 	int		side;
 
-	double	perpWallDist;
-	double	lineHeight;
-	int		drawStart;
-	int		drawEnd;
+	double	perpwalldist;
+	double	lineheight;
+	int		drawstart;
+	int		drawend;
 	double	xwall;
-	int		texX;
+	int		tex_x;
 	int		y;
 	float	step;
-	float	texPos;
-	int		texY;
+	float	texpos;
+	int		texy;
 	int		color;
 }			t_rays;
 
@@ -122,7 +138,7 @@ typedef struct s_cub
 	float	py;
 
 	float	angle;
-
+	float start_x;
 	float	speed;
 
 	bool	k_plus;
@@ -134,9 +150,8 @@ typedef struct s_cub
 	bool	right_r;
 	bool	left_r;
 
-	int		direction;
-
-	t_img	imgs[2];
+	int		texture2apply;
+	t_img	imgs[5]; // (main screen)0 ,norte1, sul2, este3, oeste4;
 	t_rays	*rays;
 }			t_cub;
 
@@ -162,10 +177,9 @@ void		my_mlx_pixel_put(t_img *img, int x, int y, int color);
 
 void		init_rays(t_cub *cub, t_rays *rays, int i);
 void		draw_line(t_cub *cub, t_rays *rays, int i);
-bool		colision(float px, float py, t_cub *cub);
+bool		colision(float px, float py, t_cub *cub, int flag);
 void		exit_msg(t_cub *cub, char *str);
-void	my_mlx_pixel_put(t_img *img, int x, int y, int color);
-		// img = cub->imgs[1] // [1] e o que corresponde ao ecra
+void		my_mlx_pixel_put(t_img *img, int x, int y, int color);
 
 void		set_null_window_vars(t_cub *cub);
 void		set_null_key_vars(t_cub *cub);
@@ -173,9 +187,12 @@ void		set_null_player_vars(t_cub *cub);
 void		set_null(t_cub *cub);
 void		set_null_texture_vars(t_cub *cub, int i);
 void		end_game(t_cub *cub);
-void		calc_text_wall_pixel(t_cub *cub, t_rays **ray);
+void		calc_text_wall_pixel(t_cub *cub, t_rays **ray, int texture);
 void		ft_calc_dist_wall(t_cub *cub, t_rays **ray, int i);
 void		refresh_frames(t_cub *cub);
+void		init_textures(t_cub *cub);
+void put_square(t_cub *cub, int x, int y, int size, int color);
+
 
 /* unused funct headers */
 void		draw_map(t_cub *game);
