@@ -6,7 +6,7 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 15:55:36 by fde-jesu          #+#    #+#             */
-/*   Updated: 2025/04/23 18:31:06 by fde-jesu         ###   ########.fr       */
+/*   Updated: 2025/04/23 19:08:30 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,50 +17,19 @@ void	draw_map(t_cub *game)
 {
 	char	**map;
 	int		color;
+	int		x;
+	int		y;
 
+	x = -1;
+	y = -1;
 	map = game->map;
 	color = 0x0000FF;
-	for (int y = 0; map[y]; y++)
-		for (int x = 0; map[y][x]; x++)
+	while (map[++y])
+	{
+		x = -1;
+		while (map[y][++x])
 			if (map[y][x] == '1')
-				put_square(game, x * 5, y * 5, 5, 0xff0000);
-}
-
-void	cast_rays(t_cub *cub)
-{
-	double	fraction;
-	float	start_x;
-	int		i;
-
-	fraction = PI / 3 / WIDTH;
-	start_x = cub->angle - PI / 6;
-	cub->start_x = start_x;
-	i = 0;
-	while (i < WIDTH)
-	{
-		init_rays(cub, cub->rays, i);
-		draw_line(cub, cub->rays, i);
-		start_x += fraction;
-		i++;
-	}
-}
-
-static void	show_rays(t_cub *cub, float start_x)
-{
-	float	cos_;
-	float	sin_;
-	float	ray_x;
-	float	ray_y;
-
-	cos_ = cos(start_x);
-	sin_ = sin(start_x);
-	ray_x = cub->px / 5;
-	ray_y = cub->py / 5;
-	while (!colision(ray_x, ray_y, cub, 1))
-	{
-		put_pixel(cub, ray_x, ray_y, 0xFFF);
-		ray_x += cos_;
-		ray_y += sin_;
+				put_square(game, x * 5, y * 5, 5);
 	}
 }
 
@@ -73,7 +42,7 @@ int	draw_loop(t_cub *cub)
 	move_player(cub);
 	cast_rays(cub);
 	draw_map(cub);
-	put_square(cub, cub->px / 5, cub->py / 5, 5, 0xfff000);
+	put_square(cub, cub->px / 5, cub->py / 5, 0xFF);
 	fraction = PI / 3 / WIDTH;
 	while (i < WIDTH)
 	{

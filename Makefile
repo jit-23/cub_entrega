@@ -16,7 +16,8 @@ SRC_FILES:=  main.c\
 				calc_dist_wall.c \
 				utils.c\
 				set_null.c\
-				draw_map.c
+				draw_map.c\
+				display_rays.c
 
 MAKE:= make -j -C
 LIBFT_DIR:= libs/libft

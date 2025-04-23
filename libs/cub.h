@@ -6,7 +6,7 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 17:06:17 by fde-jesu          #+#    #+#             */
-/*   Updated: 2025/04/23 18:01:45 by fde-jesu         ###   ########.fr       */
+/*   Updated: 2025/04/23 19:14:43 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@
 # define SOUTH_TEXTURE 2
 # define WEST_TEXTURE 3
 # define EAST_TEXTURE 4
-
 
 //# define NORTH_DIR -(3.14159 / 2)
 //# define SOUTH_DIR (3.14159 / 2)
@@ -138,7 +137,7 @@ typedef struct s_cub
 	float	py;
 
 	float	angle;
-	float start_x;
+	float	start_x;
 	float	speed;
 
 	bool	k_plus;
@@ -166,7 +165,6 @@ void		move_player_utils(t_cub *cub, float cos, float sin);
 void		start_cub(t_cub *cub);
 void		init_cub(t_cub *cub);
 void		exit_msg(t_cub *cub, char *str);
-void		put_square(t_cub *cub, int x, int y, int size, int color);
 int			key_press(int kcode, t_cub *cub);
 void		move_player(t_cub *cub);
 void		close_window(void);
@@ -191,8 +189,8 @@ void		calc_text_wall_pixel(t_cub *cub, t_rays **ray, int texture);
 void		ft_calc_dist_wall(t_cub *cub, t_rays **ray, int i);
 void		refresh_frames(t_cub *cub);
 void		init_textures(t_cub *cub);
-void put_square(t_cub *cub, int x, int y, int size, int color);
-
+void		put_square(t_cub *cub, int x, int y, int color);
+void		show_rays(t_cub *cub, float start_x);
 
 /* unused funct headers */
 void		draw_map(t_cub *game);
