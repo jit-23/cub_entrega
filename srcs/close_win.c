@@ -13,17 +13,16 @@
 #include "../libs/cub.h"
 #include "../libs/mlx/mlx.h"
 
-
-void end_game(t_cub *cub)
+void	end_game(t_cub *cub)
 {
 	int i;
 
 	i = -1;
 	if (cub->img_address)
 		mlx_destroy_image(cub->mlx_con, cub->img);
-	if(cub->imgs[0].img)
+	if (cub->imgs[0].img)
 		mlx_destroy_image(cub->mlx_con, cub->imgs[0].img);
-	if(cub->imgs[1].img)
+	if (cub->imgs[1].img)
 		mlx_destroy_image(cub->mlx_con, cub->imgs[1].img);
 	if (cub->mlx_win)
 		mlx_destroy_window(cub->mlx_con, cub->mlx_win);
@@ -37,5 +36,4 @@ void end_game(t_cub *cub)
 	if (cub->map)
 		free(cub->map);
 	exit(0);
-		
 }

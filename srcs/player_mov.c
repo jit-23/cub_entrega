@@ -13,20 +13,20 @@
 #include "../libs/cub.h"
 #include "../libs/mlx/mlx.h"
 
-void move_player(t_cub *cub)
+void	move_player(t_cub *cub)
 {
-	float   angle_speed; 
-	float   cos_angl;
-	float   sin_angl;
+	float	angle_speed;
+	float	cos_angl;
+	float	sin_angl;
 
-    angle_speed = 0.01;
-    sin_angl = sin(cub->angle);
-    cos_angl = cos(cub->angle);
+	angle_speed = 0.01;
+	sin_angl = sin(cub->angle);
+	cos_angl = cos(cub->angle);
 	if (cub->left_r)
 		cub->angle -= angle_speed;
 	if (cub->right_r)
 		cub->angle += angle_speed;
-	if (cub->angle <=  0)
+	if (cub->angle <= 0)
 		cub->angle += 2 * PI;
 	if (cub->angle > 2 * PI)
 		cub->angle = 0;

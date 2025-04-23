@@ -18,7 +18,7 @@ void	calc_text_wall_pixel(t_cub *cub, t_rays **ray)
 	t_rays	*rays;
 
 	rays = (*ray);
-	rays->xwall = fmod(rays->xwall, BLOCK) / BLOCK ;
+	rays->xwall = fmod(rays->xwall, BLOCK) / BLOCK;
 	rays->texX = (int)((rays->xwall) * ((double)cub->imgs[0].x));
 	if ((rays->side == 0 && rays->rayDirX < 0))
 		rays->texX = cub->imgs[0].x - rays->texX - 1;
@@ -26,8 +26,8 @@ void	calc_text_wall_pixel(t_cub *cub, t_rays **ray)
 		rays->texX = cub->imgs[0].x - rays->texX - 1;
 	rays->y = rays->drawStart;
 	rays->step = 1.0 * cub->imgs[0].y / rays->lineHeight;
-	rays->texPos = (rays->drawStart - HEIGH / 2 + \
-		rays->lineHeight / 2) * rays->step;
+	rays->texPos = (rays->drawStart - HEIGH / 2 + rays->lineHeight / 2)
+		* rays->step;
 }
 
 void	ft_calc_dist_wall(t_cub *cub, t_rays **ray, int i)
@@ -36,11 +36,11 @@ void	ft_calc_dist_wall(t_cub *cub, t_rays **ray, int i)
 
 	rays = (*ray);
 	if (rays->side == 0)
-		rays->perpWallDist = (rays->mapX - cub->px + \
-			(1 - rays->stepX) / 2) / rays->rayDirX;
+		rays->perpWallDist = (rays->mapX - cub->px + (1 - rays->stepX) / 2)
+			/ rays->rayDirX;
 	else
-		rays->perpWallDist = (rays->mapY - cub->py + \
-			(1 - rays->stepY) / 2) / rays->rayDirY;
+		rays->perpWallDist = (rays->mapY - cub->py + (1 - rays->stepY) / 2)
+			/ rays->rayDirY;
 	rays->lineHeight = (BLOCK * HEIGH) / rays->perpWallDist;
 	rays->drawStart = -rays->lineHeight / 2 + HEIGH / 2;
 	if (rays->drawStart < 0)
