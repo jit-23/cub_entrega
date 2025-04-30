@@ -6,7 +6,7 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 15:55:36 by fde-jesu          #+#    #+#             */
-/*   Updated: 2025/04/30 23:13:26 by fde-jesu         ###   ########.fr       */
+/*   Updated: 2025/04/30 23:15:07 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ int	draw_loop(t_cub *cub)
 	int		i;
 	float	fraction;
 
+	i = -1;
 	i = 0;
 	move_player(cub);
 	cast_rays(cub);
