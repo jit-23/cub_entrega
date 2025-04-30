@@ -6,7 +6,7 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 15:55:36 by fde-jesu          #+#    #+#             */
-/*   Updated: 2025/04/30 23:11:31 by fde-jesu         ###   ########.fr       */
+/*   Updated: 2025/04/30 23:13:26 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	draw_loop(t_cub *cub)
 	fraction = PI / 3 / WIDTH;
 	while (i < WIDTH)
 	{
-		if (i % 50 == 0)
+		if (i % 40 == 0)
 			show_rays(cub, cub->start_x);
 		cub->start_x += fraction;
 		i++;
