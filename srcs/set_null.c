@@ -6,7 +6,7 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 14:31:27 by fde-jesu          #+#    #+#             */
-/*   Updated: 2025/04/23 14:55:39 by fde-jesu         ###   ########.fr       */
+/*   Updated: 2025/04/30 23:27:12 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,8 @@ void	set_null_texture_vars(t_cub *cub, int i)
 {
 	cub->imgs[i].img = 0;
 	cub->imgs[i].addr = NULL;
-	cub->imgs[i].x = 0;
 	cub->imgs[i].y = 0;
+	cub->imgs[i].x = 0;
 	cub->imgs[i].bpp = 0;
 	cub->imgs[i].size_line = 0;
 	cub->imgs[i].endian = 0;
