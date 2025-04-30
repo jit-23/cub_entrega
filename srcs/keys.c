@@ -6,7 +6,7 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 00:13:55 by fde-jesu          #+#    #+#             */
-/*   Updated: 2025/04/23 18:02:23 by fde-jesu         ###   ########.fr       */
+/*   Updated: 2025/04/30 16:26:57 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,10 @@ int	key_press(int kcode, t_cub *cub)
 		cub->left_r = true;
 	if (kcode == RIGHT)
 		cub->right_r = true;
-	if (kcode == LESS)
-		cub->speed -= 2;
-	if (kcode == PLUSS)
-		cub->speed += 2;
+	if (kcode == LESS && cub->speed - 1 > 0)
+		cub->speed -= 1;
+	if (kcode == PLUSS && cub->speed + 1 < 5)
+		cub->speed += 1;
 	if (kcode == 113 || kcode == 65307)
 		end_game(cub);
 	return (0);
@@ -68,7 +68,7 @@ void	move_player_utils(t_cub *cub, float cos, float sin)
 		cub->px -= cos * cub->speed;
 		cub->py -= sin * cub->speed;
 	}
-	if ((cub->k_right) && !colision(cub->py - sin * cub->speed, cub->px + cos
+	if ((cub->k_right) && !colision(cub->px - sin * cub->speed, cub->py + cos
 			* cub->speed, cub, 0))
 	{
 		cub->px -= sin * cub->speed;
