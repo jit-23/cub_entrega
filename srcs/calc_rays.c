@@ -6,7 +6,7 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 00:12:08 by fde-jesu          #+#    #+#             */
-/*   Updated: 2025/04/23 18:03:51 by fde-jesu         ###   ########.fr       */
+/*   Updated: 2025/05/01 15:32:59 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,8 +97,8 @@ void	init_rays(t_cub *cub, t_rays *rays, int i)
 {
 	rays->mapx = (int)cub->px;
 	rays->mapy = (int)cub->py;
-	rays->fov = PI / 3;
-	rays->planelength = tan(rays->fov / 2);
+	//rays->fov = PI / 3;
+	rays->planelength = tan((PI / 3) / 2);
 	rays->dirx = cos(cub->angle);
 	rays->diry = sin(cub->angle);
 	rays->planex = -rays->diry * rays->planelength;
