@@ -6,7 +6,7 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 17:06:17 by fde-jesu          #+#    #+#             */
-/*   Updated: 2025/04/23 19:14:43 by fde-jesu         ###   ########.fr       */
+/*   Updated: 2025/05/02 01:30:04 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -185,8 +185,8 @@ void		set_null_player_vars(t_cub *cub);
 void		set_null(t_cub *cub);
 void		set_null_texture_vars(t_cub *cub, int i);
 void		end_game(t_cub *cub);
-void		calc_text_wall_pixel(t_cub *cub, t_rays **ray, int texture);
-void		ft_calc_dist_wall(t_cub *cub, t_rays **ray, int i);
+void		calc_text_wall_pixel(t_cub *cub, t_rays *ray, int texture);
+void		ft_calc_dist_wall(t_cub *cub, t_rays *ray, int i);
 void		refresh_frames(t_cub *cub);
 void		init_textures(t_cub *cub);
 void		put_square(t_cub *cub, int x, int y, int color);
