@@ -6,7 +6,7 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 17:06:17 by fde-jesu          #+#    #+#             */
-/*   Updated: 2025/05/02 16:29:49 by fde-jesu         ###   ########.fr       */
+/*   Updated: 2025/05/02 16:38:33 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -197,4 +197,6 @@ void		show_rays(t_cub *cub, float start_x);
 void		draw_map(t_cub *game);
 void		clear_win(t_cub *cub);
 void		put_pixel(t_cub *cub, int x, int y, int color);
+void	put_circle(t_cub *cub, int x, int y, int color);
+
 #endif
