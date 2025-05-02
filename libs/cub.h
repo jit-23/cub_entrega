@@ -6,7 +6,7 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 17:06:17 by fde-jesu          #+#    #+#             */
-/*   Updated: 2025/04/23 19:14:43 by fde-jesu         ###   ########.fr       */
+/*   Updated: 2025/05/01 15:21:49 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@
 # define PLUSS 61
 # define BLOCK 25
 # define PI 3.14159
-# define WIDTH 800
-# define HEIGH 600
+# define WIDTH 1000
+# define HEIGH 400
 # define PIXEL 32
 
 # define NORTH_TEXTURE 1
