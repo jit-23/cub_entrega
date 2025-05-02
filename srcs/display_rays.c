@@ -6,7 +6,7 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 19:08:41 by fde-jesu          #+#    #+#             */
-/*   Updated: 2025/04/23 19:13:42 by fde-jesu         ###   ########.fr       */
+/*   Updated: 2025/05/02 00:25:49 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ void	cast_rays(t_cub *cub)
 		i++;
 	}
 }
+
+
 
 void	show_rays(t_cub *cub, float start_x)
 {
