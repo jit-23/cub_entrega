@@ -6,7 +6,7 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 17:06:17 by fde-jesu          #+#    #+#             */
-/*   Updated: 2025/05/02 16:38:33 by fde-jesu         ###   ########.fr       */
+/*   Updated: 2025/05/02 19:21:44 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,11 @@
 # define RIGHT 65363
 # define LESS 45
 # define PLUSS 61
-# define BLOCK 25
-# define PI 3.14159
-# define WIDTH 1000
-# define HEIGH 400
+# define BLOCK_SCALE 25
+# define MINIMAP_SCALE 5
+# define PI 3.1415926535897932384626433
+# define WIDTH 800
+# define HEIGH 600
 # define PIXEL 32
 
 # define NORTH_TEXTURE 1
@@ -85,7 +86,6 @@ typedef struct s_rays
 	int		stepx;
 	int		stepy;
 
-	int		hit;
 	int		side;
 
 	double	perpwalldist;

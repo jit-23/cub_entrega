@@ -6,7 +6,7 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 00:12:08 by fde-jesu          #+#    #+#             */
-/*   Updated: 2025/05/02 02:42:53 by fde-jesu         ###   ########.fr       */
+/*   Updated: 2025/05/02 19:39:37 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 void	calc_text_wall_pixel(t_cub *cub, t_rays *rays, int texture)
 {
-	rays->xwall = fmod(rays->xwall, BLOCK) / BLOCK;
+	rays->xwall = fmod(rays->xwall, BLOCK_SCALE) / BLOCK_SCALE;
 	rays->tex_x = (int)((rays->xwall) * ((double)cub->imgs[texture].x));
 	if ((rays->side == 0 && rays->raydirx < 0))
 		rays->tex_x = cub->imgs[texture].x - rays->tex_x - 1;
@@ -41,7 +41,7 @@ void	handle_texture_calcs(t_cub *cub, t_rays *rays, int i)
 
 void	ft_calc_draw_limitations_for_walls(t_cub *cub, t_rays *rays, int i)
 {
-	rays->lineheight = (BLOCK * HEIGH) / rays->perpwalldist;
+	rays->lineheight = (BLOCK_SCALE * HEIGH) / rays->perpwalldist;
 	rays->drawstart = -rays->lineheight / 2 + HEIGH / 2;
 	if (rays->drawstart < 0)
 		rays->drawstart = 0;

@@ -6,62 +6,53 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 00:57:09 by fde-jesu          #+#    #+#             */
-/*   Updated: 2025/05/02 16:45:41 by fde-jesu         ###   ########.fr       */
+/*   Updated: 2025/05/02 19:17:51 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libs/cub.h"
 #include "../libs/mlx/mlx.h"
 
-void	put_square(t_cub *cub, int x, int y, int color)
+
+static void put_square_yline(t_cub *cub, int x, int y,int  color)
 {
-	int	size;
 	int	i;
 
 	i = -1;
-	size = 5;
-	while (++i < size)
+	while(++i < 5)
 		put_pixel(cub, x + i, y, color);
-	i = -1;
-	while (++i < size)
-		put_pixel(cub, x, y + i, color);
-	i = -1;
-	while (++i < size)
-		put_pixel(cub, x + i, y + size, color);
-	i = -1;
-	while (++i < size)
-		put_pixel(cub, x + size, y + i, color);
 }
 
+static void put_square_xline(t_cub *cub, int x, int y,int  color)
+{
+	int	i;
+
+	i = -1;
+	while(++i < 5)
+		put_pixel(cub, x, y + i, color);
+}
+
+void	put_square(t_cub *cub, int x, int y, int color)
+{
+	put_square_xline(cub, x , y, color);
+	put_square_xline(cub, x + 5, y, color);
+	put_square_yline(cub, x, y , color);
+	put_square_yline(cub, x, y + 5, color);
+}
 
 void	put_circle(t_cub *cub, int x, int y, int color)
 {
 
-	double theta;
+	double	theta;
 
 	theta = 0;
     while (theta <= 2 * PI)
     {
         x = cub->px + 20 * cos(theta);
         y = cub->py + 20 * sin(theta);
-        //mlx_pixel_put(mlx, win, x, y, color);
-		put_pixel(cub, x/5, y/5, 0xFF);
+		put_pixel(cub, x / MINIMAP_SCALE, y / MINIMAP_SCALE, 0xFF);
 		theta += 0.01;
 	}
-	/* int	size;
-	int	i;
-
-	i = -1;
-	size = 5;
-	float cos = 1;
-	float sin = 0;
-	for (float i = 0; i < PI; i+=0.1)
-	{
-		put_pixel(cub, cos, sin, 0xFFFF);
-		cos+=0.1;
-		sin+=0.1;
-	} */
-	
 }
 
 void	put_pixel(t_cub *cub, int x, int y, int color)

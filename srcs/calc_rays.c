@@ -6,7 +6,7 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 00:12:08 by fde-jesu          #+#    #+#             */
-/*   Updated: 2025/05/02 02:47:11 by fde-jesu         ###   ########.fr       */
+/*   Updated: 2025/05/02 19:59:57 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,23 +47,23 @@ bool	colision(float px, float py, t_cub *cub, int flag)
 	y = 0;
 	if (flag == 1) // para mini mapa
 	{
-		x = (px / 5);
-		y = (py / 5);
+		x = (px / MINIMAP_SCALE);
+		y = (py / MINIMAP_SCALE);
 		if (cub->map[y][x] == '1')
 			return (true);
 		return (false);
 	}
 	else
 	{
-		x = (px / BLOCK);
-		y = (py / BLOCK);
+		x = (px / BLOCK_SCALE);
+		y = (py / BLOCK_SCALE);
 		if (cub->map[y][x] == '1')
 			return (true);
 		return (false);
 	}
 }
 
-void	ft_calc_dda(t_cub *cub, t_rays *rays)
+/* void	ft_calc_dda(t_cub *cub, t_rays *rays)
 {
 	rays->hit = 0;
 	while (rays->hit == 0)
@@ -85,9 +85,29 @@ void	ft_calc_dda(t_cub *cub, t_rays *rays)
 			// Check for a collision (wall hit)
 			rays->hit = 1;
 	}
+} */
+
+// Move in the direction of the shortest step
+void	ft_calc_dda(t_cub *cub, t_rays *rays)
+{
+	while (!colision(rays->mapx, rays->mapy, cub, 0))
+	{
+		if (rays->sidedistx < rays->sidedisty)
+		{
+			rays->sidedistx += rays->deltadistx;
+			rays->mapx += rays->stepx;
+			rays->side = 0;
+		}
+		else
+		{
+			rays->sidedisty += rays->deltadisty;
+			rays->mapy += rays->stepy;
+			rays->side = 1;
+		}
+	}
 }
 
-void	init_rays(t_cub *cub, t_rays *rays, int i)
+/* void	init_rays(t_cub *cub, t_rays *rays, int i)
 {
 	rays->mapx = (int)cub->px;
 	rays->mapy = (int)cub->py;
@@ -100,10 +120,28 @@ void	init_rays(t_cub *cub, t_rays *rays, int i)
 	rays->camerax = 2 * i / (double)WIDTH - 1;
 	rays->raydirx = rays->dirx + rays->planex * rays->camerax;
 	rays->raydiry = rays->diry + rays->planey * rays->camerax;
-	rays->deltadistx = sqrt(1 + (rays->raydiry * rays->raydiry) / (rays->raydirx
-				* rays->raydirx));
+	rays->deltadistx = sqrt(1 + (rays->raydiry * rays->raydiry) / (rays->raydirx * rays->raydirx));
 	rays->deltadisty = sqrt(1 + (rays->raydirx * rays->raydirx) / (rays->raydiry
 				* rays->raydiry));
+	ft_calc_ray_side(cub, rays);
+	ft_calc_dda(cub, rays);
+	ft_calc_dist_wall(cub, rays, i);
+} */
+
+void	init_rays(t_cub *cub, t_rays *rays, int i)
+{
+	rays->mapx = (int)cub->px;
+	rays->mapy = (int)cub->py;
+	rays->dirx = cos(cub->angle);
+	rays->diry = sin(cub->angle);
+	rays->raydirx = rays->dirx + ((-rays->diry * tan((PI / 6 )))\
+				* ((i << 1) / (double)WIDTH - 1));
+	rays->raydiry = rays->diry + ((rays->dirx * tan((PI / 6 )))\
+				* ((i << 1) / (double)WIDTH - 1));
+	rays->deltadistx = sqrt(1 + (rays->raydiry * rays->raydiry) /\
+				(pow(rays->raydirx, 2)));
+	rays->deltadisty = sqrt(1 + (rays->raydirx * rays->raydirx) /\
+				(pow(rays->raydiry, 2)));
 	ft_calc_ray_side(cub, rays);
 	ft_calc_dda(cub, rays);
 	ft_calc_dist_wall(cub, rays, i);

@@ -6,7 +6,7 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 15:55:36 by fde-jesu          #+#    #+#             */
-/*   Updated: 2025/05/02 16:40:39 by fde-jesu         ###   ########.fr       */
+/*   Updated: 2025/05/02 19:18:48 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,18 +37,16 @@ int	draw_loop(t_cub *cub)
 {
 	int		i;
 
-	i = 0;
+	i = -1;
 	move_player(cub);
 	cast_rays(cub);
 	draw_map(cub);
-	put_circle(cub, cub->px / 5, cub->py / 5, 0xFF);
-	//put_square(cub, cub->px / 5, cub->py / 5, 0xFF);
-	while (i < WIDTH)
+	put_circle(cub, cub->px , cub->py , 0xFF);
+	while (++i < WIDTH)
 	{
 		if (i % 40 == 0)
 			show_rays(cub, cub->start_x);
-		cub->start_x += PI / 3 / WIDTH;
-		i++;
+		cub->start_x += PI / 3 /  WIDTH;
 	}
 	refresh_frames(cub);
 	return (0);
