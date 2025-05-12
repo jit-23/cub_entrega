@@ -6,7 +6,7 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 00:57:09 by fde-jesu          #+#    #+#             */
-/*   Updated: 2025/05/02 19:17:51 by fde-jesu         ###   ########.fr       */
+/*   Updated: 2025/05/12 20:26:31 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	put_pixel(t_cub *cub, int x, int y, int color)
 	index = 0;
 	if (x >= WIDTH || y >= HEIGH || x < 0 || y < 0)
 		return ;
-	index = y * cub->size_line + x * cub->bpp / 8;
+	index = y * cub->imgs[0].size_line + x * cub->imgs[0].bpp/8;
 	cub->imgs[0].addr[index] = color & 0xFF;
 	cub->imgs[0].addr[index + 1] = (color >> 8) & 0xFF;
 	cub->imgs[0].addr[index + 2] = (color >> 16) & 0xFF;

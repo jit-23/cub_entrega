@@ -6,7 +6,7 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 00:12:08 by fde-jesu          #+#    #+#             */
-/*   Updated: 2025/05/02 19:59:57 by fde-jesu         ###   ########.fr       */
+/*   Updated: 2025/05/12 20:20:28 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,30 +63,6 @@ bool	colision(float px, float py, t_cub *cub, int flag)
 	}
 }
 
-/* void	ft_calc_dda(t_cub *cub, t_rays *rays)
-{
-	rays->hit = 0;
-	while (rays->hit == 0)
-	// Move in the direction of the shortest step
-	{
-		if (rays->sidedistx < rays->sidedisty)
-		{
-			rays->sidedistx += rays->deltadistx;
-			rays->mapx += rays->stepx;
-			rays->side = 0;
-		}
-		else
-		{
-			rays->sidedisty += rays->deltadisty;
-			rays->mapy += rays->stepy;
-			rays->side = 1;
-		}
-		if (colision(rays->mapx, rays->mapy, cub, 0))
-			// Check for a collision (wall hit)
-			rays->hit = 1;
-	}
-} */
-
 // Move in the direction of the shortest step
 void	ft_calc_dda(t_cub *cub, t_rays *rays)
 {
@@ -106,27 +82,6 @@ void	ft_calc_dda(t_cub *cub, t_rays *rays)
 		}
 	}
 }
-
-/* void	init_rays(t_cub *cub, t_rays *rays, int i)
-{
-	rays->mapx = (int)cub->px;
-	rays->mapy = (int)cub->py;
-	rays->dirx = cos(cub->angle);
-	rays->diry = sin(cub->angle);
-
-	rays->planex = -rays->diry * tan((PI / 6));
-	rays->planey = rays->dirx * tan((PI / 6 ));
-
-	rays->camerax = 2 * i / (double)WIDTH - 1;
-	rays->raydirx = rays->dirx + rays->planex * rays->camerax;
-	rays->raydiry = rays->diry + rays->planey * rays->camerax;
-	rays->deltadistx = sqrt(1 + (rays->raydiry * rays->raydiry) / (rays->raydirx * rays->raydirx));
-	rays->deltadisty = sqrt(1 + (rays->raydirx * rays->raydirx) / (rays->raydiry
-				* rays->raydiry));
-	ft_calc_ray_side(cub, rays);
-	ft_calc_dda(cub, rays);
-	ft_calc_dist_wall(cub, rays, i);
-} */
 
 void	init_rays(t_cub *cub, t_rays *rays, int i)
 {

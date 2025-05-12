@@ -6,7 +6,7 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 14:31:27 by fde-jesu          #+#    #+#             */
-/*   Updated: 2025/04/30 23:27:12 by fde-jesu         ###   ########.fr       */
+/*   Updated: 2025/05/12 20:28:44 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,8 @@
 
 void	set_null_window_vars(t_cub *cub)
 {
-	cub->img_address = NULL;
-	cub->bpp = 0;
-	cub->size_line = 0;
-	cub->endian = 0;
 	cub->mlx_con = NULL;
 	cub->mlx_win = NULL;
-	cub->img = NULL;
 	cub->map_x = 0;
 	cub->map_y = 0;
 }

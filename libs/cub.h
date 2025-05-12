@@ -6,7 +6,7 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 17:06:17 by fde-jesu          #+#    #+#             */
-/*   Updated: 2025/05/02 19:21:44 by fde-jesu         ###   ########.fr       */
+/*   Updated: 2025/05/12 20:28:27 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,13 +115,8 @@ typedef struct s_img
 
 typedef struct s_cub
 {
-	char	*img_address;
-	int		bpp;
-	int		size_line;
-	int		endian;
 	void	*mlx_con;
 	void	*mlx_win;
-	void	*img;
 	int		map_x;
 	int		map_y;
 
@@ -198,5 +193,6 @@ void		draw_map(t_cub *game);
 void		clear_win(t_cub *cub);
 void		put_pixel(t_cub *cub, int x, int y, int color);
 void	put_circle(t_cub *cub, int x, int y, int color);
+void	cub3d();
 
 #endif

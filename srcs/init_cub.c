@@ -6,7 +6,7 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 00:10:02 by fde-jesu          #+#    #+#             */
-/*   Updated: 2025/04/30 16:30:56 by fde-jesu         ###   ########.fr       */
+/*   Updated: 2025/05/12 18:50:07 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,7 @@ void	init_keys(t_cub *cub)
 	cub->k_less = false;
 	cub->left_r = false;
 	cub->right_r = false;
-	cub->angle = (3.14159 / 2);
-	cub->speed = 1.3;
-	cub->sin = 1;
-	cub->cos = 0;
+	
 }
 
 char	**get_map(void)
