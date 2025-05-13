@@ -6,7 +6,7 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 14:31:27 by fde-jesu          #+#    #+#             */
-/*   Updated: 2025/05/12 20:28:44 by fde-jesu         ###   ########.fr       */
+/*   Updated: 2025/05/13 18:56:57 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,7 @@ void	set_null_key_vars(t_cub *cub)
 
 void	set_null_player_vars(t_cub *cub)
 {
-	cub->fov = 0;
-	cub->pos = 0;
 	cub->map = NULL;
-	cub->dist = 0;
-	cub->cos = 0;
-	cub->sin = 0;
 	cub->px = 0;
 	cub->py = 0;
 	cub->angle = 0;

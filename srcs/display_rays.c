@@ -6,14 +6,14 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 19:08:41 by fde-jesu          #+#    #+#             */
-/*   Updated: 2025/05/02 19:39:17 by fde-jesu         ###   ########.fr       */
+/*   Updated: 2025/05/13 18:46:58 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libs/cub.h"
 #include "../libs/mlx/mlx.h"
 
-void	cast_rays(t_cub *cub)
+void	ray_casting(t_cub *cub)
 {
 	double	fraction;
 	float	start_x;
@@ -21,14 +21,12 @@ void	cast_rays(t_cub *cub)
 
 	fraction = PI / 3 / WIDTH;
 	start_x = cub->angle - PI / 6;
-	cub->start_x = start_x;
-	i = 0;
-	while (i < WIDTH)
+	i = -1;
+	while (++i < WIDTH)
 	{
 		init_rays(cub, cub->rays, i);
 		draw_line(cub, cub->rays, i);
 		start_x += fraction;
-		i++;
 	}
 }
 

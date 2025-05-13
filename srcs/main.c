@@ -6,7 +6,7 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 15:55:36 by fde-jesu          #+#    #+#             */
-/*   Updated: 2025/05/12 20:26:50 by fde-jesu         ###   ########.fr       */
+/*   Updated: 2025/05/13 18:56:53 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,21 +33,34 @@ void	draw_map(t_cub *game)
 	}
 }
 
-int	draw_loop(t_cub *cub)
+void create_minimap(t_cub *cub)
 {
-	int		i;
-
-	i = -1;
-	move_player(cub);
-	cast_rays(cub);
 	draw_map(cub);
 	put_circle(cub, cub->px , cub->py , 0xFF);
+	draw_fov(cub);
+}
+
+void draw_fov(t_cub *cub)
+{
+	int	i;
+	float	start_x;
+
+	i = -1;
+	start_x = cub->angle - PI / 6;
 	while (++i < WIDTH)
 	{
 		if (i % 40 == 0)
-			show_rays(cub, cub->start_x);
-		cub->start_x += PI / 3 /  WIDTH;
+			show_rays(cub, start_x);
+		start_x += PI / 3 /  WIDTH;
 	}
+}
+
+int	draw_loop(t_cub *cub)
+{
+	
+	move_player(cub);
+	ray_casting(cub);
+	create_minimap(cub);
 	refresh_frames(cub);
 	return (0);
 }
@@ -58,8 +71,6 @@ void set_player_atributes(t_cub *cub)
 	cub->py = HEIGH / 2;
 	cub->angle = (3.14159 / 2);
 	cub->speed = 1.3;
-	cub->sin = 1;
-	cub->cos = 0;
 }
 
 

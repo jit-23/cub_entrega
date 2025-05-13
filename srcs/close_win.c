@@ -6,7 +6,7 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 00:11:29 by fde-jesu          #+#    #+#             */
-/*   Updated: 2025/04/23 17:03:43 by fde-jesu         ###   ########.fr       */
+/*   Updated: 2025/05/13 18:13:50 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@ static void	destroy_imgs(t_cub *cub, int i)
 void	end_game(t_cub *cub)
 {
 	destroy_imgs(cub, -1);
-	if (cub->img_address)
-		mlx_destroy_image(cub->mlx_con, cub->img);
 	if (cub->mlx_win)
 		mlx_destroy_window(cub->mlx_con, cub->mlx_win);
 	if (cub->mlx_con)
