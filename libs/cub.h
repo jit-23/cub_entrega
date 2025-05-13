@@ -6,7 +6,7 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 17:06:17 by fde-jesu          #+#    #+#             */
-/*   Updated: 2025/05/12 20:28:27 by fde-jesu         ###   ########.fr       */
+/*   Updated: 2025/05/13 19:30:47 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,42 +61,35 @@
 
 typedef struct s_rays
 {
-	int		mapx;
-	int		mapy;
 	double	fov;
 	double	planelength;
-
+	double	xwall;
 	double	dirx;
 	double	diry;
-
 	double	planex;
 	double	planey;
-
 	double	camerax;
-
 	double	raydirx;
 	double	raydiry;
-
 	double	deltadistx;
 	double	deltadisty;
-
 	double	sidedistx;
 	double	sidedisty;
-
-	int		stepx;
-	int		stepy;
-
-	int		side;
-
 	double	perpwalldist;
 	double	lineheight;
-	int		drawstart;
-	int		drawend;
-	double	xwall;
-	int		tex_x;
-	int		y;
+	
 	float	step;
 	float	texpos;
+
+	int		mapx;
+	int		mapy;
+	int		stepx;
+	int		stepy;
+	int		side;
+	int		drawstart;
+	int		drawend;
+	int		tex_x;
+	int		y;
 	int		texy;
 	int		color;
 }			t_rays;
@@ -115,26 +108,25 @@ typedef struct s_img
 
 typedef struct s_cub
 {
-	void	*mlx_con;
-	void	*mlx_win;
-	int		map_x;
-	int		map_y;
-
+	
 	/* player info */
-	int		fov;
-	int		pos;
-	char	**map;
-
-	double	dist;
-
-	float	cos;
-	float	sin;
+	
+	
 	float	px;
 	float	py;
-
 	float	angle;
-	float	start_x;
 	float	speed;
+
+	/* (main screen)0 ,norte1, sul2, este3, oeste4 */
+	t_img	imgs[5]; 
+	t_rays	*rays;
+	void	*mlx_con;
+	void	*mlx_win;
+	char	**map;
+
+	int		map_x;
+	int		map_y;
+	int		texture2apply;
 
 	bool	k_plus;
 	bool	k_less;
@@ -144,10 +136,6 @@ typedef struct s_cub
 	bool	k_right;
 	bool	right_r;
 	bool	left_r;
-
-	int		texture2apply;
-	t_img	imgs[5]; // (main screen)0 ,norte1, sul2, este3, oeste4;
-	t_rays	*rays;
 }			t_cub;
 
 void		init_keys(t_cub *cub);
@@ -166,7 +154,7 @@ void		move_player(t_cub *cub);
 void		close_window(void);
 int			draw_loop(t_cub *cub);
 char		**get_map(void);
-void		cast_rays(t_cub *cub);
+void		ray_casting(t_cub *cub);
 void		my_mlx_pixel_put(t_img *img, int x, int y, int color);
 
 void		init_rays(t_cub *cub, t_rays *rays, int i);
@@ -187,10 +175,11 @@ void		refresh_frames(t_cub *cub);
 void		init_textures(t_cub *cub);
 void		put_square(t_cub *cub, int x, int y, int color);
 void		show_rays(t_cub *cub, float start_x);
+void 		create_minimap(t_cub *cub);
+void 		draw_fov(t_cub *cub);
 
 /* unused funct headers */
 void		draw_map(t_cub *game);
-void		clear_win(t_cub *cub);
 void		put_pixel(t_cub *cub, int x, int y, int color);
 void	put_circle(t_cub *cub, int x, int y, int color);
 void	cub3d();

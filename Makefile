@@ -17,7 +17,8 @@ SRC_FILES:=  main.c\
 				utils.c\
 				set_null.c\
 				draw_map.c\
-				display_rays.c
+				display_rays.c\
+				mini_map_utils.c
 
 MAKE:= make -j -C
 LIBFT_DIR:= libs/libft

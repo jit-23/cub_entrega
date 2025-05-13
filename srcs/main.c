@@ -6,54 +6,14 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 15:55:36 by fde-jesu          #+#    #+#             */
-/*   Updated: 2025/05/13 18:56:53 by fde-jesu         ###   ########.fr       */
+/*   Updated: 2025/05/13 19:38:54 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libs/cub.h"
 #include "../libs/mlx/mlx.h"
 
-void	draw_map(t_cub *game)
-{
-	char	**map;
-	int		color;
-	int		x;
-	int		y;
 
-	x = -1;
-	y = -1;
-	map = game->map;
-	color = 0x0000FF;
-	while (map[++y])
-	{
-		x = -1;
-		while (map[y][++x])
-			if (map[y][x] == '1')
-				put_square(game, x * 5, y * 5, 5);
-	}
-}
-
-void create_minimap(t_cub *cub)
-{
-	draw_map(cub);
-	put_circle(cub, cub->px , cub->py , 0xFF);
-	draw_fov(cub);
-}
-
-void draw_fov(t_cub *cub)
-{
-	int	i;
-	float	start_x;
-
-	i = -1;
-	start_x = cub->angle - PI / 6;
-	while (++i < WIDTH)
-	{
-		if (i % 40 == 0)
-			show_rays(cub, start_x);
-		start_x += PI / 3 /  WIDTH;
-	}
-}
 
 int	draw_loop(t_cub *cub)
 {
@@ -69,7 +29,7 @@ void set_player_atributes(t_cub *cub)
 {
 	cub->px = WIDTH / 2;
 	cub->py = HEIGH / 2;
-	cub->angle = (3.14159 / 2);
+	cub->angle = PI / 2;
 	cub->speed = 1.3;
 }
 
