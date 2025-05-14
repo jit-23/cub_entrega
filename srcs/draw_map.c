@@ -6,12 +6,11 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 15:58:41 by fde-jesu          #+#    #+#             */
-/*   Updated: 2025/05/13 18:49:54 by fde-jesu         ###   ########.fr       */
+/*   Updated: 2025/05/14 20:17:50 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libs/cub.h"
-#include "../libs/mlx/mlx.h"
 
 void	draw_right_texture(t_cub *cub, t_rays *rays, int i, int texture)
 {

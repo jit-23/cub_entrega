@@ -6,12 +6,11 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 14:31:27 by fde-jesu          #+#    #+#             */
-/*   Updated: 2025/05/13 18:56:57 by fde-jesu         ###   ########.fr       */
+/*   Updated: 2025/05/14 20:18:08 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libs/cub.h"
-#include "../libs/mlx/mlx.h"
 
 void	set_null_window_vars(t_cub *cub)
 {

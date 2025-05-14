@@ -6,12 +6,11 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 00:12:08 by fde-jesu          #+#    #+#             */
-/*   Updated: 2025/05/13 18:24:42 by fde-jesu         ###   ########.fr       */
+/*   Updated: 2025/05/14 20:17:40 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libs/cub.h"
-#include "../libs/mlx/mlx.h"
 
 void	calc_text_wall_pixel(t_cub *cub, t_rays *rays, int texture)
 {

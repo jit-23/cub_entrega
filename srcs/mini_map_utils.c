@@ -6,18 +6,17 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 19:37:57 by fde-jesu          #+#    #+#             */
-/*   Updated: 2025/05/13 19:40:31 by fde-jesu         ###   ########.fr       */
+/*   Updated: 2025/05/14 20:18:03 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libs/cub.h"
-#include "../libs/mlx/mlx.h"
 
-void create_minimap(t_cub *cub)
+void	create_minimap(t_cub *cub)
 {
-    draw_map(cub);
-    put_circle(cub, cub->px , cub->py , 0xFF);
-    draw_fov(cub);
+	draw_map(cub);
+	put_circle(cub, cub->px, cub->py, 0xFF);
+	draw_fov(cub);
 }
 
 void	draw_map(t_cub *game)
@@ -36,13 +35,14 @@ void	draw_map(t_cub *game)
 		x = -1;
 		while (map[y][++x])
 			if (map[y][x] == '1')
-				put_square(game, x * MINIMAP_SCALE, y * MINIMAP_SCALE, MINIMAP_SCALE);
+				put_square(game, x * MINIMAP_SCALE, y * MINIMAP_SCALE,
+					MINIMAP_SCALE);
 	}
 }
 
-void draw_fov(t_cub *cub)
+void	draw_fov(t_cub *cub)
 {
-	int	i;
+	int		i;
 	float	start_x;
 
 	i = -1;
@@ -51,20 +51,19 @@ void draw_fov(t_cub *cub)
 	{
 		if (i % 40 == 0)
 			show_rays(cub, start_x);
-		start_x += PI / 3 /  WIDTH;
+		start_x += PI / 3 / WIDTH;
 	}
 }
 
 void	put_circle(t_cub *cub, int x, int y, int color)
 {
-
-	double	theta;
+	double theta;
 
 	theta = 0;
-    while (theta <= 2 * PI)
-    {
-        x = cub->px + 20 * cos(theta);
-        y = cub->py + 20 * sin(theta);
+	while (theta <= 2 * PI)
+	{
+		x = cub->px + 20 * cos(theta);
+		y = cub->py + 20 * sin(theta);
 		put_pixel(cub, x / MINIMAP_SCALE, y / MINIMAP_SCALE, 0xFF);
 		theta += 0.01;
 	}

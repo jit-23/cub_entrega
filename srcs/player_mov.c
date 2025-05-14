@@ -6,12 +6,11 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 00:15:13 by fde-jesu          #+#    #+#             */
-/*   Updated: 2025/05/13 19:36:06 by fde-jesu         ###   ########.fr       */
+/*   Updated: 2025/05/14 20:18:01 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libs/cub.h"
-#include "../libs/mlx/mlx.h"
 
 void	move_player(t_cub *cub)
 {

@@ -6,12 +6,11 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 00:12:08 by fde-jesu          #+#    #+#             */
-/*   Updated: 2025/05/12 20:20:28 by fde-jesu         ###   ########.fr       */
+/*   Updated: 2025/05/14 20:17:43 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libs/cub.h"
-#include "../libs/mlx/mlx.h"
 
 void	ft_calc_ray_side(t_cub *cub, t_rays *rays)
 {
@@ -89,14 +88,14 @@ void	init_rays(t_cub *cub, t_rays *rays, int i)
 	rays->mapy = (int)cub->py;
 	rays->dirx = cos(cub->angle);
 	rays->diry = sin(cub->angle);
-	rays->raydirx = rays->dirx + ((-rays->diry * tan((PI / 6 )))\
-				* ((i << 1) / (double)WIDTH - 1));
-	rays->raydiry = rays->diry + ((rays->dirx * tan((PI / 6 )))\
-				* ((i << 1) / (double)WIDTH - 1));
-	rays->deltadistx = sqrt(1 + (rays->raydiry * rays->raydiry) /\
-				(pow(rays->raydirx, 2)));
-	rays->deltadisty = sqrt(1 + (rays->raydirx * rays->raydirx) /\
-				(pow(rays->raydiry, 2)));
+	rays->raydirx = rays->dirx + ((-rays->diry * tan((PI / 6))) * ((i << 1)
+				/ (double)WIDTH - 1));
+	rays->raydiry = rays->diry + ((rays->dirx * tan((PI / 6))) * ((i << 1)
+				/ (double)WIDTH - 1));
+	rays->deltadistx = sqrt(1 + (rays->raydiry * rays->raydiry)
+			/ (pow(rays->raydirx, 2)));
+	rays->deltadisty = sqrt(1 + (rays->raydirx * rays->raydirx)
+			/ (pow(rays->raydiry, 2)));
 	ft_calc_ray_side(cub, rays);
 	ft_calc_dda(cub, rays);
 	ft_calc_dist_wall(cub, rays, i);

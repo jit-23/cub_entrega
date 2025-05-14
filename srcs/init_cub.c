@@ -6,23 +6,11 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 00:10:02 by fde-jesu          #+#    #+#             */
-/*   Updated: 2025/05/12 18:50:07 by fde-jesu         ###   ########.fr       */
+/*   Updated: 2025/05/14 20:17:54 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libs/cub.h"
-#include "../libs/mlx/mlx.h"
-
-void	exit_msg(t_cub *cub, char *str)
-{
-	ft_putstr_fd(2, str);
-	exit(1);
-}
-
-void	close_window(void)
-{
-	exit(0);
-}
 
 void	init_keys(t_cub *cub)
 {
@@ -34,7 +22,6 @@ void	init_keys(t_cub *cub)
 	cub->k_less = false;
 	cub->left_r = false;
 	cub->right_r = false;
-	
 }
 
 char	**get_map(void)
@@ -85,4 +72,22 @@ void	init_textures(t_cub *cub)
 			&(cub->imgs[4].x), &(cub->imgs[4].y));
 	cub->imgs[4].addr = mlx_get_data_addr(cub->imgs[4].img, &cub->imgs[4].bpp,
 			&cub->imgs[4].size_line, &cub->imgs[4].endian);
+}
+
+void	set_player_atributes(t_cub *cub)
+{
+	cub->px = WIDTH / 2;
+	cub->py = HEIGH / 2;
+	cub->angle = PI / 2;
+	cub->speed = 1.3;
+}
+
+void	init_cub(t_cub *cub)
+{
+	set_null(cub);
+	init_keys(cub);
+	cub->rays = (t_rays *)malloc(sizeof(t_rays));
+	cub->map = get_map();
+	set_player_atributes(cub);
+	start_cub(cub);
 }
