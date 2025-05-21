@@ -1,78 +1,72 @@
-NAME:= cub
-CFLAGS:= -g #-Wall -Werror -Wextra
+#Compile Options
+NAME = cub3d
+CC = cc
+CFLAGS =  -g -Wall -Wextra -Werror
+MLXFLAGS = -L/usr/X11R6/lib -lX11 -lXext -lm
+# Directories
+MLX = mlx/libmlx_Linux.a
+LIBFT = includes/libft/libft.a
+SRC = sources/main.c\
+		sources/set_null.c\
+		sources/calc_dist_wall.c\
+		sources/calc_rays.c\
+		sources/close_win.c\
+		sources/display_rays.c\
+		sources/draw_map.c\
+		sources/exit_functions.c\
+		sources/init_cub.c\
+		sources/keys.c\
+		sources/flood_fill.c\
+		sources/verify.c\
+		sources/copy_map.c\
+		sources/map_get.c\
+		sources/colors.c\
+		sources/map_values_check.c\
+		sources/map_checker.c\
+		sources/map_content_check.c\
+		sources/parsing.c\
+		sources/textures.c\
+		sources/utils.c\
+		sources/utils2.c\
+		sources/utils3.c\
+		sources/draw_utils.c\
+		sources/mini_map_utils.c\
+# Commands
+RM = rm -rf
+OBJ = $(SRC:.c=.o)
+# Defs
+GREEN=\e[38;5;118m
+END= $<\e[0m
 
-HEADER = includes/libs/cub.h
-GREEN:= \033[0;32m
-RED:=\033[0;31m 
-BLUE=\033[0;34m
-default_colour=\033[0m
+all: checker $(NAME)
 
-SRC_FILES:=  main.c\
-				calc_rays.c \
-				close_win.c \
-				init_cub.c \
-				keys.c \
-				player_mov.c \
-				calc_dist_wall.c \
-				utils.c\
-				set_null.c\
-				draw_map.c\
-				display_rays.c\
-				mini_map_utils.c\
-				exit_functions.c
+%.o : %.c
+	$(CC) $(CFLAGS) -c $*.c -o $*.o
 
-MAKE:= make -j -C
-LIBFT_DIR:= libs/libft
-LIBFT:= libs/libft/libft.a
+$(NAME) : $(OBJ) $(LIBFT) $(PRINTF) $(MLX)
+	@$(CC) $(CFLAGS) $(MLXFLAGS) -o $(NAME) $(OBJ) $(LIBFT) $(MLX) $(MLXFLAGS)
 
-MLX_DIR:= libs/mlx/
-MLX:= -L libs/mlx -lmlx -Ilmlx -lXext -lX11 -lm #-lm -lXext -lX11#libs/mlx/libmlx_Linux.a
-#-L mlx -lmlx -Ilmlx -lXext -lX11 -lm
-OBJ_FILES:= $(patsubst %.c, %.o, $(SRC_FILES))
+$(LIBFT):
+	@make --silent -C includes/libft
 
-SRC_PATH:= srcs/
-OBJ_PATH:= obj/
+$(MLX):
+	make -C mlx
 
-SRC = $(addprefix $(SRC_PATH), $(SRC_FILES))
-OBJ = $(addprefix $(OBJ_PATH), $(OBJ_FILES))
+checker:
+	@if [ -d "mlx" ]; then echo "$(GREEN)[MLX FOLDER FOUND]$(END)"; else make download; fi
 
-all: ${NAME}
+download:
+	git clone git@github.com:42Paris/minilibx-linux.git mlx
 
-${COMP_LIB}:
-		echo "${RED}DONE${default_colour}"
-		${MAKE} ${LIBFT_DIR}
-
-${COMP_MLX}:
-		echo "${RED}DONE${default_colour}"
-		${MAKE} ${MLX_DIR}
-
-$(OBJ_PATH)%.o : $(SRC_PATH)%.c
-		@mkdir -p ${OBJ_PATH}
-		cc   ${CFLAGS}  -c $< -o $@
-
-${NAME}:  ${OBJ}
-		${MAKE} ${LIBFT_DIR}
-		${MAKE} ${MLX_DIR}
-		cc  -I. ${CFLAGS} ${OBJ} ${LIBFT} ${MLX}   -o ${NAME}
-		@echo "${GREEN}executable file: ./${NAME}${default_colour}\n"
+mlx_clean:
+	rm -rf mlx
 
 clean:
-		${MAKE} ${LIBFT_DIR} clean
-		${MAKE} ${MLX_DIR} clean
-		@rm -fr ${OBJ_PATH}
-		@echo "${RED}object files and directory deleted:${default_colour}"
+	$(RM) $(OBJ)
+	@make --silent -C includes/libft clean
 
-#valgrind: ${NAME}
-#			valgrind  --leak-check=full --show-leak-kinds=all ./cub
+fclean: clean mlx_clean
+	$(RM) $(NAME)
+	@make --silent -C includes/libft fclean
 
-fclean: clean
-		${MAKE} ${LIBFT_DIR} fclean
-#		${MAKE} ${MLX_DIR} fclean
-		@rm -f ${NAME}
-		@echo "${RED}executable deleted:$(default_colour)"
-		@echo "${RED}deleted all:$(default_colour)\n"
-
-re : fclean all
-
-.PHONY: all re clean fclean normi
-.SIELNT:
+re: fclean all
