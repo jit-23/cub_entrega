@@ -6,7 +6,7 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/21 03:52:19 by fde-jesu          #+#    #+#             */
-/*   Updated: 2025/05/21 04:08:16 by fde-jesu         ###   ########.fr       */
+/*   Updated: 2025/05/21 19:11:58 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,21 +21,26 @@ void	create_minimap(t_cub *cub)
 
 void	draw_map(t_cub *game)
 {
-	char	**map;
+	(void)game;
+/* 	char	**map;
 	int		x;
 	int		y;
 
 	x = -1;
 	y = -1;
 	map = game->map;
-	while (map[++y])
-	{
+	printf("game->info->map_y - %d\n", game->info->map_y);
+	while (++y < game->info->map_y)
+	{// map[++y] 
 		x = -1;
 		while (map[y][++x])
+		{
+			printf("asd\n");
 			if (map[y][x] == '1')
-				put_square(game, x * MINIMAP_SCALE, y * MINIMAP_SCALE,
-					MINIMAP_SCALE);
-	}
+				put_square(game, x * MINIMAP_SCALE, y * MINIMAP_SCALE, MINIMAP_SCALE);
+				
+		}
+	} */
 }
 
 void	draw_fov(t_cub *cub)

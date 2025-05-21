@@ -6,7 +6,7 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 00:12:08 by fde-jesu          #+#    #+#             */
-/*   Updated: 2025/05/21 02:53:51 by fde-jesu         ###   ########.fr       */
+/*   Updated: 2025/05/21 19:38:54 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ void	ft_calc_draw_limitations_for_walls(t_cub *cub, t_rays *rays)
 {
 	rays->lineheight = (BLOCK_SCALE * HEIGH) / rays->perpwalldist;
 	rays->drawstart = -rays->lineheight / 2 + HEIGH / 2;
+	printf("rays->lineheight = .%f.\n",rays->lineheight);
+	printf("rays->drawstart = %d\n", rays->drawstart);
 	if (rays->drawstart < 0)
 		rays->drawstart = 0;
 	rays->drawend = rays->lineheight / 2 + HEIGH / 2;

@@ -6,7 +6,7 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 08:36:09 by mloureir          #+#    #+#             */
-/*   Updated: 2025/05/21 04:08:18 by fde-jesu         ###   ########.fr       */
+/*   Updated: 2025/05/21 18:41:45 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,10 +92,15 @@ void	free_all(t_map *info)
 	free_maps(info);
 }
 
+int	color(int t, int r, int g, int b)
+{
+	return (*(int *)(unsigned char [4]){b, g, r, t});
+}
+
 int	main(int argc, char **argv)
 {
 	t_map	info;
-
+	printf("here\n");
 	start_vars(&info);
 	if (argc != 2)
 	{
@@ -108,6 +113,8 @@ int	main(int argc, char **argv)
 		free_all(&info);
 		return (1);
 	}
+	info.color[0].val = color(0, info.color[0].red, info.color[0].green, info.color[0].blue);
+	info.color[1].val = color(0, info.color[1].red, info.color[1].green, info.color[1].blue);
 	cub3d(&info);
 	free_all(&info);
 }

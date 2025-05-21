@@ -6,7 +6,7 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 08:37:02 by mloureir          #+#    #+#             */
-/*   Updated: 2025/05/21 04:57:00 by fde-jesu         ###   ########.fr       */
+/*   Updated: 2025/05/21 18:32:13 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ typedef struct s_colors
 {
 	char	*path;
 	char	identifier;
+	int		val;
 	int		red;
 	int		green;
 	int		blue;
