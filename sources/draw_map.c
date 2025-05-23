@@ -6,7 +6,7 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 15:58:41 by fde-jesu          #+#    #+#             */
-/*   Updated: 2025/05/21 19:44:20 by fde-jesu         ###   ########.fr       */
+/*   Updated: 2025/05/22 22:08:34 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,18 +32,18 @@ void	draw_line(t_cub *cub, t_rays *rays, int i)
 	int	column;
 
 	column = 0;
-	if (&cub->imgs[0] != NULL)
-		printf("cub->imgs[0] exist\n");
-	printf("i = %d\n", i);
-	//printf("rays->drawstart = %d\n", rays->drawstart);
-	//while (column <= rays->drawstart)
-	//{
-	//	my_mlx_pixel_put(&cub->imgs[0], i, 5, 255);
-	//	column++;
-	//}	
-	//column = rays->drawend;
-	//while (++column < HEIGH)
-	//	my_mlx_pixel_put(&cub->imgs[0], i, 10, 277); 
+	
+	printf("rays->drawstart - %d\n", rays->drawstart);
+	printf("rays->drawend - %d\n", rays->drawend);
+ 	while (column <= rays->drawstart)
+	{
+		my_mlx_pixel_put(&cub->imgs[0], i, 5, 0xFFF);
+		column++;
+	}	
+	column = rays->drawend;
+	while (++column < HEIGH)
+		my_mlx_pixel_put(&cub->imgs[0], i, 10, 0xFF00FF); 
+	
 	while (rays->y < rays->drawend + 1)
 	{
 		if (cub->texture2apply == NORTH_TEXTURE)
