@@ -4,6 +4,9 @@ CC = cc
 CFLAGS =  -g -Wall -Wextra -Werror
 MLXFLAGS = -L/usr/X11R6/lib -lX11 -lXext -lm
 # Directories
+OBJ_PATH:= obj/
+
+
 MLX = mlx/libmlx_Linux.a
 LIBFT = includes/libft/libft.a
 SRC = sources/main.c\
