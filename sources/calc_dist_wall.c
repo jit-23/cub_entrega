@@ -6,7 +6,7 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 00:12:08 by fde-jesu          #+#    #+#             */
-/*   Updated: 2025/05/22 21:49:21 by fde-jesu         ###   ########.fr       */
+/*   Updated: 2025/05/24 04:42:23 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,37 +48,32 @@ void	ft_calc_draw_limitations_for_walls(t_cub *cub, t_rays *rays)
 	if (rays->drawend >= HEIGH)
 		rays->drawend = HEIGH - 1;
 	if (rays->side == 0)
-		rays->xwall = cub->py + rays->perpwalldist * rays->raydiry;
+		rays->xwall = cub->info->y + rays->perpwalldist * rays->raydiry;
 	else
-		rays->xwall = cub->px + rays->perpwalldist * rays->raydirx;
+		rays->xwall = cub->info->x + rays->perpwalldist * rays->raydirx;
 }
 
-
+// conserta as direcoes para aplicar textura nortes e sul e e w
 void	ft_calc_dist_wall(t_cub *cub, t_rays *rays)
 {
-	printf("rays->mapx - %d\n", rays->mapx);
-	printf("cub->px - %f\n", cub->px);
-	printf("rays->stepx - %d\n", rays->stepx);
-	printf("rays->raydirx - %f\n", rays->raydirx);
 	if (rays->side == 0)
 	{
-		rays->perpwalldist = (rays->mapx - cub->px + (1 - rays->stepx) / 2)
+		rays->perpwalldist = (rays->mapx - cub->info->x + (1 - rays->stepx) / 2)
 			/ rays->raydirx;
 		if (rays->raydirx > 0)
 			cub->texture2apply = WEST_TEXTURE;
-		else//conserta as direcoes para aplicar textura nortes e sul e e w
+		else
 			cub->texture2apply = EAST_TEXTURE;
 	}
 	else
 	{
-		rays->perpwalldist = (rays->mapy - cub->py + (1 - rays->stepy) / 2)
+		rays->perpwalldist = (rays->mapy - cub->info->y + (1 - rays->stepy) / 2)
 			/ rays->raydiry;
 		if (rays->raydiry > 0)
 			cub->texture2apply = NORTH_TEXTURE;
 		else
 			cub->texture2apply = SOUTH_TEXTURE;
 	}
-	printf("rays->perpwalldist = %f\n",rays->perpwalldist);
 	ft_calc_draw_limitations_for_walls(cub, rays);
 	handle_texture_calcs(cub, rays);
 }

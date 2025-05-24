@@ -6,7 +6,7 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 15:58:41 by fde-jesu          #+#    #+#             */
-/*   Updated: 2025/05/22 22:08:34 by fde-jesu         ###   ########.fr       */
+/*   Updated: 2025/05/24 04:51:57 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,18 +32,14 @@ void	draw_line(t_cub *cub, t_rays *rays, int i)
 	int	column;
 
 	column = 0;
-	
-	printf("rays->drawstart - %d\n", rays->drawstart);
-	printf("rays->drawend - %d\n", rays->drawend);
- 	while (column <= rays->drawstart)
+	while (column <= rays->drawstart)
 	{
-		my_mlx_pixel_put(&cub->imgs[0], i, 5, 0xFFF);
+		my_mlx_pixel_put(&cub->imgs[0], i, column, cub->info->color[1].val);
 		column++;
-	}	
+	}
 	column = rays->drawend;
 	while (++column < HEIGH)
-		my_mlx_pixel_put(&cub->imgs[0], i, 10, 0xFF00FF); 
-	
+		my_mlx_pixel_put(&cub->imgs[0], i, column, cub->info->color[0].val);
 	while (rays->y < rays->drawend + 1)
 	{
 		if (cub->texture2apply == NORTH_TEXTURE)
@@ -55,4 +51,9 @@ void	draw_line(t_cub *cub, t_rays *rays, int i)
 		else if (cub->texture2apply == WEST_TEXTURE)
 			draw_right_texture(cub, rays, i, WEST_TEXTURE);
 	}
+}
+
+int	color(int t, int r, int g, int b)
+{
+	return (*(int *)(unsigned char [4]){b, g, r, t});
 }

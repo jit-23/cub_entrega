@@ -6,7 +6,7 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 00:11:29 by fde-jesu          #+#    #+#             */
-/*   Updated: 2025/05/20 15:32:46 by mloureir         ###   ########.pt       */
+/*   Updated: 2025/05/23 18:03:20 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,6 @@ void	end_game(t_cub *cub)
 		free(cub->rays);
 	if (cub->map)
 		free(cub->map);
+	free_all(cub->info);
 	exit(0);
 }

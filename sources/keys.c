@@ -6,7 +6,7 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 00:13:55 by fde-jesu          #+#    #+#             */
-/*   Updated: 2025/05/20 15:33:36 by mloureir         ###   ########.pt       */
+/*   Updated: 2025/05/24 00:23:01 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,28 +55,60 @@ int	key_release(int kcode, t_cub *cub)
 /* add the collision function here to stop the player from passing walls */
 void	move_player_utils(t_cub *cub, float cos, float sin)
 {
-	if ((cub->k_up) && !colision(cub->px + cos * cub->speed, cub->py + sin
-			* cub->speed, cub, 0))
+	if ((cub->k_up) && !colision(cub->info->x + cos * cub->speed, cub->info->y
+			+ sin * cub->speed, cub, 0))
 	{
-		cub->px += cos * cub->speed;
-		cub->py += sin * cub->speed;
+		cub->info->x += cos * cub->speed;
+		cub->info->y += sin * cub->speed;
 	}
-	if ((cub->k_down) && !colision(cub->px - cos * cub->speed, cub->py - sin
-			* cub->speed, cub, 0))
+	if ((cub->k_down) && !colision(cub->info->x - cos * cub->speed, cub->info->y
+			- sin * cub->speed, cub, 0))
 	{
-		cub->px -= cos * cub->speed;
-		cub->py -= sin * cub->speed;
+		cub->info->x -= cos * cub->speed;
+		cub->info->y -= sin * cub->speed;
 	}
-	if ((cub->k_right) && !colision(cub->px - sin * cub->speed, cub->py + cos
-			* cub->speed, cub, 0))
+	if ((cub->k_right) && !colision(cub->info->x - sin * cub->speed,
+			cub->info->y + cos * cub->speed, cub, 0))
 	{
-		cub->px -= sin * cub->speed;
-		cub->py += cos * cub->speed;
+		cub->info->x -= sin * cub->speed;
+		cub->info->y += cos * cub->speed;
 	}
-	if ((cub->k_left) && !colision(cub->px + sin * cub->speed, cub->py - cos
-			* cub->speed, cub, 0))
+	if ((cub->k_left) && !colision(cub->info->x + sin * cub->speed, cub->info->y
+			- cos * cub->speed, cub, 0))
 	{
-		cub->px += sin * cub->speed;
-		cub->py -= cos * cub->speed;
+		cub->info->x += sin * cub->speed;
+		cub->info->y -= cos * cub->speed;
 	}
 }
+
+/* void	move_player_utils(t_cub *cub, float cos, float sin)
+{
+	if ((cub->k_up) && !colision(cub->info->x + cos * cub->speed, cub->info->y
+			+ sin
+			* cub->speed, cub, 0))
+	{
+		cub->info->x += cos * cub->speed;
+		cub->info->y += sin * cub->speed;
+	}
+	if ((cub->k_down) && !colision(cub->info->x - cos * cub->speed, cub->info->y
+			- sin
+			* cub->speed, cub, 0))
+	{
+		cub->info->x -= cos * cub->speed;
+		cub->info->y -= sin * cub->speed;
+	}
+	if ((cub->k_right) && !colision(cub->info->x - sin * cub->speed,
+			cub->info->y + cos
+			* cub->speed, cub, 0))
+	{
+		cub->info->x -= sin * cub->speed;
+		cub->info->y += cos * cub->speed;
+	}
+	if ((cub->k_left) && !colision(cub->info->x + sin * cub->speed, cub->info->y
+			- cos
+			* cub->speed, cub, 0))
+	{
+		cub->info->x += sin * cub->speed;
+		cub->info->y -= cos * cub->speed;
+	}
+} */

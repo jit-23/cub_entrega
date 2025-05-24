@@ -6,33 +6,34 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 00:12:08 by fde-jesu          #+#    #+#             */
-/*   Updated: 2025/05/22 19:59:04 by fde-jesu         ###   ########.fr       */
+/*   Updated: 2025/05/24 04:27:41 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
+/* esquerda ; direita; baixo; cima */
 void	ft_calc_ray_side(t_cub *cub, t_rays *rays)
 {
 	if (rays->raydirx < 0)
 	{
-		rays->stepx = -1; // valor para
-		rays->sidedistx = (cub->px - rays->mapx) * rays->deltadistx;
+		rays->stepx = -1;
+		rays->sidedistx = (cub->info->x - rays->mapx) * rays->deltadistx;
 	}
 	else
 	{
 		rays->stepx = 1;
-		rays->sidedistx = (rays->mapx + 1.0 - cub->px) * rays->deltadistx;
+		rays->sidedistx = (rays->mapx + 1.0 - cub->info->x) * rays->deltadistx;
 	}
 	if (rays->raydiry < 0)
 	{
-		rays->stepy = -1; // baixo
-		rays->sidedisty = (cub->py - rays->mapy) * rays->deltadisty;
+		rays->stepy = -1;
+		rays->sidedisty = (cub->info->y - rays->mapy) * rays->deltadisty;
 	}
 	else
 	{
-		rays->stepy = 1; // cima
-		rays->sidedisty = (rays->mapy + 1.0 - cub->py) * rays->deltadisty;
+		rays->stepy = 1;
+		rays->sidedisty = (rays->mapy + 1.0 - cub->info->y) * rays->deltadisty;
 	}
 }
 
@@ -43,7 +44,7 @@ bool	colision(float px, float py, t_cub *cub, int flag)
 
 	x = 0;
 	y = 0;
-	if (flag == 1) // para mini mapa
+	if (flag == 1)
 	{
 		x = (px / MINIMAP_SCALE);
 		y = (py / MINIMAP_SCALE);
@@ -83,8 +84,8 @@ void	ft_calc_dda(t_cub *cub, t_rays *rays)
 
 void	init_rays(t_cub *cub, t_rays *rays, int i)
 {
-	rays->mapx = (int)cub->px;
-	rays->mapy = (int)cub->py;
+	rays->mapx = (int)cub->info->x;
+	rays->mapy = (int)cub->info->y;
 	rays->dirx = cos(cub->angle);
 	rays->diry = sin(cub->angle);
 	rays->raydirx = rays->dirx + ((-rays->diry * tan((PI / 6))) * ((i << 1)

@@ -14,7 +14,7 @@
 
 void	exit_msg(t_cub *cub, char *str)
 {
-	(void )cub;
+	(void)cub;
 	ft_putstr_fd(str, 2);
 	exit(1);
 }

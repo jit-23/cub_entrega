@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mloureir <mloureir@42porto.com>            +#+  +:+       +#+        */
+/*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 10:19:32 by mloureir          #+#    #+#             */
-/*   Updated: 2025/05/20 09:22:25 by mloureir         ###   ########.pt       */
+/*   Updated: 2025/05/24 05:04:59 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ void	start_counters(t_counters *counters)
 
 int	ft_n_atoi(const char *nptr, int n, int s)
 {
-	int	toreturn;
 	int	index;
+	int	toreturn;
 
 	toreturn = 0;
 	index = s;

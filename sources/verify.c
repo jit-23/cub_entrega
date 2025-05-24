@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   verify.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mloureir <mloureir@42porto.com>            +#+  +:+       +#+        */
+/*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 10:37:34 by mloureir          #+#    #+#             */
-/*   Updated: 2025/05/20 09:21:28 by mloureir         ###   ########.pt       */
+/*   Updated: 2025/05/24 04:57:23 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,13 @@ int	verify_paths(t_textures *texture)
 	return (0);
 }
 
+static void	init_player_pos(t_map *map, int x, int y)
+{
+	map->x = x;
+	map->y = y;
+	return ;
+}
+
 int	verify_map(t_map *map)
 {
 	t_counters	c;
@@ -55,6 +62,8 @@ int	verify_map(t_map *map)
 		c.c = 0;
 		while (c.c < (int)ft_strlen(map->map[c.f]))
 		{
+			if (map->map[c.f][c.c] == 'N')
+				init_player_pos(map, c.c, c.f);
 			d = map->map[c.f][c.c];
 			if (map_chars(d) == 3)
 				c.ea++;

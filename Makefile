@@ -29,6 +29,7 @@ SRC = sources/main.c\
 		sources/utils.c\
 		sources/utils2.c\
 		sources/utils3.c\
+		sources/utils4.c\
 		sources/draw_utils.c\
 		sources/mini_map_utils.c\
 # Commands

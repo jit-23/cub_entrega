@@ -6,7 +6,7 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 10:49:45 by mloureir          #+#    #+#             */
-/*   Updated: 2025/05/21 04:24:16 by fde-jesu         ###   ########.fr       */
+/*   Updated: 2025/05/24 04:53:44 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,27 @@ int	get_color(t_colors *colors, char *map_dir)
 	return (0);
 }
 
+static int	flood_fill_check(t_map *info, int x, int y)
+{
+	static int	flag;
+
+	if (!info->map_ff[y][x])
+	{
+		flag++;
+		return (1);
+	}
+	if (info->map_ff[y][x] == '1')
+		return (1);
+	info->map_ff[y][x] = '1';
+	flood_fill_check(info, x + 1, y);
+	flood_fill_check(info, x - 1, y);
+	flood_fill_check(info, x, y + 1);
+	flood_fill_check(info, x, y - 1);
+	if (flag != 0)
+		return (1);
+	return (0);
+}
+
 int	parser(t_map *map, char *map_dir)
 {
 	if (check_errs(map_dir) != 0)
@@ -45,6 +66,8 @@ int	parser(t_map *map, char *map_dir)
 	if (copy_map(map, map_dir) != 0)
 		return (1);
 	if (verify_values(map) != 0)
+		return (1);
+	if (flood_fill_check(map, map->x, map->y) != 0)
 		return (1);
 	return (0);
 }
