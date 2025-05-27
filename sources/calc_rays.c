@@ -6,7 +6,7 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 00:12:08 by fde-jesu          #+#    #+#             */
-/*   Updated: 2025/05/24 04:27:41 by fde-jesu         ###   ########.fr       */
+/*   Updated: 2025/05/27 18:28:42 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,16 +65,25 @@ bool	colision(float px, float py, t_cub *cub, int flag)
 // Move in the direction of the shortest step
 void	ft_calc_dda(t_cub *cub, t_rays *rays)
 {
+
+	// printf("rays->mapx = %d\n", rays->mapx);
+// 	printf("cub->info->x = %f\n", cub->info->x);
+	// printf("rays->mapy = %d\n", rays->mapy);
+	// printf("cub->info->y = %f\n", cub->info->y);
 	while (!colision(rays->mapx, rays->mapy, cub, 0))
 	{
+		// printf("00\n");
 		if (rays->sidedistx < rays->sidedisty)
 		{
+			// printf("--->  1\n");
 			rays->sidedistx += rays->deltadistx;
 			rays->mapx += rays->stepx;
 			rays->side = 0;
 		}
 		else
 		{
+			// printf("---> 2\n");
+			
 			rays->sidedisty += rays->deltadisty;
 			rays->mapy += rays->stepy;
 			rays->side = 1;

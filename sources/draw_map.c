@@ -6,7 +6,7 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 15:58:41 by fde-jesu          #+#    #+#             */
-/*   Updated: 2025/05/24 04:51:57 by fde-jesu         ###   ########.fr       */
+/*   Updated: 2025/05/27 18:07:28 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ void	draw_right_texture(t_cub *cub, t_rays *rays, int i, int texture)
 
 void	draw_line(t_cub *cub, t_rays *rays, int i)
 {
-	int	column;
+	 int	column;
 
-	column = 0;
+	 column = 0;
 	while (column <= rays->drawstart)
 	{
 		my_mlx_pixel_put(&cub->imgs[0], i, column, cub->info->color[1].val);
@@ -40,8 +40,13 @@ void	draw_line(t_cub *cub, t_rays *rays, int i)
 	column = rays->drawend;
 	while (++column < HEIGH)
 		my_mlx_pixel_put(&cub->imgs[0], i, column, cub->info->color[0].val);
+	
+	//printf("rays->y = %d\n", rays->y);
+	//printf("rays->drawend = %d\n", rays->drawend); // esta a sair do scope: -2147483648 (limit int)
+	//exit(1);
 	while (rays->y < rays->drawend + 1)
 	{
+	//	printf("rays->y = %d\n", rays->y);
 		if (cub->texture2apply == NORTH_TEXTURE)
 			draw_right_texture(cub, rays, i, NORTH_TEXTURE);
 		else if (cub->texture2apply == SOUTH_TEXTURE)

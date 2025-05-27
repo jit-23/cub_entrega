@@ -6,7 +6,7 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 00:13:55 by fde-jesu          #+#    #+#             */
-/*   Updated: 2025/05/24 00:23:01 by fde-jesu         ###   ########.fr       */
+/*   Updated: 2025/05/25 17:19:06 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ int	key_release(int kcode, t_cub *cub)
 /* add the collision function here to stop the player from passing walls */
 void	move_player_utils(t_cub *cub, float cos, float sin)
 {
+	
 	if ((cub->k_up) && !colision(cub->info->x + cos * cub->speed, cub->info->y
 			+ sin * cub->speed, cub, 0))
 	{

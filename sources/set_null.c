@@ -6,7 +6,7 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 14:31:27 by fde-jesu          #+#    #+#             */
-/*   Updated: 2025/05/23 23:30:17 by fde-jesu         ###   ########.fr       */
+/*   Updated: 2025/05/26 07:22:15 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,6 @@ void	set_null_key_vars(t_cub *cub)
 void	set_null_player_vars(t_cub *cub)
 {
 	cub->map = NULL;
-	cub->info->x = 0;
-	cub->info->y = 0;
 	cub->angle = 0;
 	cub->speed = 0;
 	cub->texture2apply = 0;
@@ -56,12 +54,12 @@ void	set_null_texture_vars(t_cub *cub, int i)
 void	set_null(t_cub *cub)
 {
 	int	i;
-
+	
 	i = -1;
 	set_null_window_vars(cub);
 	set_null_player_vars(cub);
 	set_null_key_vars(cub);
 	while (++i < 2)
-		set_null_texture_vars(cub, i);
+	set_null_texture_vars(cub, i);
 	cub->rays = NULL;
 }

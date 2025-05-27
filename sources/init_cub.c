@@ -6,7 +6,7 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 00:10:02 by fde-jesu          #+#    #+#             */
-/*   Updated: 2025/05/24 04:53:49 by fde-jesu         ###   ########.fr       */
+/*   Updated: 2025/05/26 07:43:41 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,8 @@ void	init_textures(t_cub *cub)
 
 void	set_player_atributes(t_cub *cub)
 {
-	cub->info->x = WIDTH / 2;
-	cub->info->y = HEIGH / 2;
+	//cub->info->x = WIDTH / 2;
+	//cub->info->y = HEIGH / 2;
 	cub->angle = PI / 2;
 	cub->speed = 1.3;
 }
@@ -63,4 +63,5 @@ void	init_cub(t_cub *cub)
 	set_rays_null(cub->rays);
 	set_player_atributes(cub);
 	start_cub(cub);
+
 }

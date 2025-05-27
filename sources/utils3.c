@@ -6,7 +6,7 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 15:25:17 by mloureir          #+#    #+#             */
-/*   Updated: 2025/05/24 00:52:38 by fde-jesu         ###   ########.fr       */
+/*   Updated: 2025/05/26 07:43:56 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int	draw_loop(t_cub *cub)
 	ray_casting(cub);
 	create_minimap(cub);
 	refresh_frames(cub);
+
 	return (0);
 }
 
@@ -36,6 +37,7 @@ void	cub3d(t_map *info)
 
 	cub.info = info;
 	init_cub(&cub);
+
 	mlx_hook(cub.mlx_win, 2, 1L << 0, key_press, &cub);
 	mlx_hook(cub.mlx_win, 3, 1L << 1, key_release, &cub);
 	mlx_loop_hook(cub.mlx_con, draw_loop, &cub);
