@@ -6,7 +6,7 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 00:12:08 by fde-jesu          #+#    #+#             */
-/*   Updated: 2025/05/27 18:28:42 by fde-jesu         ###   ########.fr       */
+/*   Updated: 2025/05/28 11:24:52 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,24 +42,15 @@ bool	colision(float px, float py, t_cub *cub, int flag)
 	int	x;
 	int	y;
 
-	x = 0;
-	y = 0;
-	if (flag == 1)
-	{
-		x = (px / MINIMAP_SCALE);
-		y = (py / MINIMAP_SCALE);
+	x = (px / flag);
+	y = (py / flag);
+	ft_putnbr_fd(x, 1);
+	ft_putnbr_fd(y, 1);
+	if (x < 0 || y < 0 || x > WIDTH || y > HEIGH)
+		return (true);
 		if (cub->info->map[y][x] == '1')
 			return (true);
 		return (false);
-	}
-	else
-	{
-		x = (px / BLOCK_SCALE);
-		y = (py / BLOCK_SCALE);
-		if (cub->info->map[y][x] == '1')
-			return (true);
-		return (false);
-	}
 }
 
 // Move in the direction of the shortest step
@@ -70,7 +61,7 @@ void	ft_calc_dda(t_cub *cub, t_rays *rays)
 // 	printf("cub->info->x = %f\n", cub->info->x);
 	// printf("rays->mapy = %d\n", rays->mapy);
 	// printf("cub->info->y = %f\n", cub->info->y);
-	while (!colision(rays->mapx, rays->mapy, cub, 0))
+	while (!colision(rays->mapx, rays->mapy, cub, BLOCK_SCALE))
 	{
 		// printf("00\n");
 		if (rays->sidedistx < rays->sidedisty)

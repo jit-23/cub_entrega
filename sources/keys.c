@@ -6,7 +6,7 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 00:13:55 by fde-jesu          #+#    #+#             */
-/*   Updated: 2025/05/25 17:19:06 by fde-jesu         ###   ########.fr       */
+/*   Updated: 2025/05/28 11:15:34 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,59 +57,27 @@ void	move_player_utils(t_cub *cub, float cos, float sin)
 {
 	
 	if ((cub->k_up) && !colision(cub->info->x + cos * cub->speed, cub->info->y
-			+ sin * cub->speed, cub, 0))
+			+ sin * cub->speed, cub, BLOCK_SCALE))
 	{
 		cub->info->x += cos * cub->speed;
 		cub->info->y += sin * cub->speed;
 	}
 	if ((cub->k_down) && !colision(cub->info->x - cos * cub->speed, cub->info->y
-			- sin * cub->speed, cub, 0))
+			- sin * cub->speed, cub, BLOCK_SCALE))
 	{
 		cub->info->x -= cos * cub->speed;
 		cub->info->y -= sin * cub->speed;
 	}
 	if ((cub->k_right) && !colision(cub->info->x - sin * cub->speed,
-			cub->info->y + cos * cub->speed, cub, 0))
+			cub->info->y + cos * cub->speed, cub, BLOCK_SCALE))
 	{
 		cub->info->x -= sin * cub->speed;
 		cub->info->y += cos * cub->speed;
 	}
 	if ((cub->k_left) && !colision(cub->info->x + sin * cub->speed, cub->info->y
-			- cos * cub->speed, cub, 0))
+			- cos * cub->speed, cub, BLOCK_SCALE))
 	{
 		cub->info->x += sin * cub->speed;
 		cub->info->y -= cos * cub->speed;
 	}
 }
-
-/* void	move_player_utils(t_cub *cub, float cos, float sin)
-{
-	if ((cub->k_up) && !colision(cub->info->x + cos * cub->speed, cub->info->y
-			+ sin
-			* cub->speed, cub, 0))
-	{
-		cub->info->x += cos * cub->speed;
-		cub->info->y += sin * cub->speed;
-	}
-	if ((cub->k_down) && !colision(cub->info->x - cos * cub->speed, cub->info->y
-			- sin
-			* cub->speed, cub, 0))
-	{
-		cub->info->x -= cos * cub->speed;
-		cub->info->y -= sin * cub->speed;
-	}
-	if ((cub->k_right) && !colision(cub->info->x - sin * cub->speed,
-			cub->info->y + cos
-			* cub->speed, cub, 0))
-	{
-		cub->info->x -= sin * cub->speed;
-		cub->info->y += cos * cub->speed;
-	}
-	if ((cub->k_left) && !colision(cub->info->x + sin * cub->speed, cub->info->y
-			- cos
-			* cub->speed, cub, 0))
-	{
-		cub->info->x += sin * cub->speed;
-		cub->info->y -= cos * cub->speed;
-	}
-} */

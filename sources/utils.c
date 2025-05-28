@@ -6,7 +6,7 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 10:19:32 by mloureir          #+#    #+#             */
-/*   Updated: 2025/05/24 05:04:59 by fde-jesu         ###   ########.fr       */
+/*   Updated: 2025/05/28 10:36:22 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ char	*rm_nl(char *str)
 	int	i;
 
 	i = 0;
-	while (str[i] != '\n')
+	while (str[i] != '\n' && str[i])
 		i++;
 	str[i] = '\0';
 	return (str);

@@ -6,7 +6,7 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 10:37:34 by mloureir          #+#    #+#             */
-/*   Updated: 2025/05/27 18:27:51 by fde-jesu         ###   ########.fr       */
+/*   Updated: 2025/05/28 10:42:35 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ int	verify_paths(t_textures *texture)
 
 static void	init_player_pos(t_map *map, int x, int y)
 {
-	map->x = x * BLOCK_SCALE;
-	map->y = y * BLOCK_SCALE;
+	map->x = x * BLOCK_SCALE + (BLOCK_SCALE / 2);
+	map->y = y * BLOCK_SCALE + (BLOCK_SCALE / 2);
 	return ;
 }
 

@@ -6,7 +6,7 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 19:08:41 by fde-jesu          #+#    #+#             */
-/*   Updated: 2025/05/27 18:13:53 by fde-jesu         ###   ########.fr       */
+/*   Updated: 2025/05/28 11:15:17 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	show_rays(t_cub *cub, float start_x)
 	sin_ = sin(start_x);
 	ray_x = cub->info->x / MINIMAP_SCALE;
 	ray_y = cub->info->y / MINIMAP_SCALE;
-	while (!colision(ray_x, ray_y, cub, 1))
+	while (!colision(ray_x, ray_y, cub, MINIMAP_SCALE))
 	{
 		put_pixel(cub, ray_x, ray_y, 0xFFF);
 		ray_x += cos_;
