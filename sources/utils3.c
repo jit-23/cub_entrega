@@ -6,7 +6,7 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 15:25:17 by mloureir          #+#    #+#             */
-/*   Updated: 2025/05/28 11:21:16 by fde-jesu         ###   ########.fr       */
+/*   Updated: 2025/05/28 12:22:06 by mloureir         ###   ########.pt       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,11 @@ void	start_cub(t_cub *cub)
 	cub->mlx_win = mlx_new_window(cub->mlx_con, WIDTH, HEIGH, "cub");
 	if (!cub->mlx_win)
 		exit_msg(cub, "Can't init window.\n");
-	init_textures(cub);
+	if (init_textures(cub) != 0)
+	{
+		end_game(cub);
+		exit_msg(cub, "No img.\n");
+	}
 }
 
 void	cub3d(t_map *info)

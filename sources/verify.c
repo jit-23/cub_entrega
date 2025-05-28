@@ -6,7 +6,7 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 10:37:34 by mloureir          #+#    #+#             */
-/*   Updated: 2025/05/28 10:42:35 by fde-jesu         ###   ########.fr       */
+/*   Updated: 2025/05/28 12:21:06 by mloureir         ###   ########.pt       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ int	verify_paths(t_textures *texture)
 	while (i < MAX_TEXTURE)
 	{
 		if (open(texture[i].path, O_RDONLY) == -1)
+			return (1);
+		if (check_xpm(texture[i].path) != 0)
 			return (1);
 		i++;
 	}

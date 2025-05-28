@@ -6,7 +6,7 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 08:37:02 by mloureir          #+#    #+#             */
-/*   Updated: 2025/05/28 11:09:57 by fde-jesu         ###   ########.fr       */
+/*   Updated: 2025/05/28 12:22:42 by mloureir         ###   ########.pt       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -165,6 +165,7 @@ int				copy_map(t_map *map, char *map_dir);
 
 int				verify_values(t_map *map);
 int				verify_ff(t_map *map);
+int				check_xpm(char *str);
 
 /* utils */
 
@@ -216,7 +217,7 @@ void			end_game(t_cub *cub);
 void			calc_text_wall_pixel(t_cub *cub, t_rays *ray, int texture);
 void			ft_calc_dist_wall(t_cub *cub, t_rays *ray);
 void			refresh_frames(t_cub *cub);
-void			init_textures(t_cub *cub);
+int				init_textures(t_cub *cub);
 void			put_square(t_cub *cub, int x, int y, int color);
 void			show_rays(t_cub *cub, float start_x);
 void			create_minimap(t_cub *cub);
@@ -224,7 +225,7 @@ void			draw_fov(t_cub *cub);
 void			cub3d(t_map *info);
 int				color(int t, int r, int g, int b);
 void			start_vars(t_map *info);
-void	set_rays_null(t_rays *ray);
+void			set_rays_null(t_rays *ray);
 
 
 #endif

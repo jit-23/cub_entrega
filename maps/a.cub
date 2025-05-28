@@ -1,7 +1,7 @@
-NO textures/wall.xpm
-SO textures/wall.xpm
-WE textures/wall.xpm
-EA textures/wall.xpm
+NO textures/dsa.xpm
+SO textures/dsa.xpm
+WE textures/dsa.xpm
+EA textures/dsa.xpm
 
 F 123,20,123
 C 153,204,100

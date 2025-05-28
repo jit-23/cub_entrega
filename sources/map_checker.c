@@ -6,20 +6,52 @@
 /*   By: mloureir <mloureir@42porto.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 10:34:22 by mloureir          #+#    #+#             */
-/*   Updated: 2025/04/30 15:33:47 by mloureir         ###   ########.pt       */
+/*   Updated: 2025/05/28 12:20:45 by mloureir         ###   ########.pt       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
+
+int	ft_strlen_slash(char *str)
+{
+	int	i;
+	int	count;
+
+	i = 0;
+	count = 0;
+	while (str[i] != '/' && str[i])
+		i++;
+	i++;
+	while (str[i])
+	{
+		count++;
+		i++;
+	}
+	return (count);
+}
+
+int	check_xpm(char *str)
+{
+	int		len;
+	char	*test;
+
+	len = ft_strlen_slash(str);
+	test = str + len - 4;
+	if (ft_strnstr(test, ".xpm", ft_strlen(test)) && len > 4)
+		return (0);
+	else
+		return (1);
+	return (0);
+}
 
 int	check_dotfile(char *map_dir)
 {
 	int		len;
 	char	*test;
 
-	len = ft_strlen(map_dir);
+	len = ft_strlen_slash(map_dir);
 	test = map_dir + len - 4;
-	if (ft_strnstr(test, ".cub", ft_strlen(test)))
+	if (ft_strnstr(test, ".cub", ft_strlen(test)) && len > 4)
 		return (0);
 	else
 		return (1);
