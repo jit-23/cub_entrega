@@ -6,7 +6,7 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/21 03:52:19 by fde-jesu          #+#    #+#             */
-/*   Updated: 2025/05/28 11:18:47 by fde-jesu         ###   ########.fr       */
+/*   Updated: 2025/05/28 17:12:31 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,8 @@ void	draw_fov(t_cub *cub)
 	start_x = cub->angle - PI / 6;
 	while (++i < WIDTH)
 	{
-		if (i % 100 == 0)
-			show_rays(cub, start_x);
+		//if (i % 40 == 0)
+		show_rays(cub, start_x);
 		start_x += PI / 3 / WIDTH;
 	}
 }

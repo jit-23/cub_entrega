@@ -6,7 +6,7 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 00:12:08 by fde-jesu          #+#    #+#             */
-/*   Updated: 2025/05/28 11:24:52 by fde-jesu         ###   ########.fr       */
+/*   Updated: 2025/05/28 17:25:16 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,16 +37,14 @@ void	ft_calc_ray_side(t_cub *cub, t_rays *rays)
 	}
 }
 
-bool	colision(float px, float py, t_cub *cub, int flag)
+bool	colision(float px, float py, t_cub *cub, int scale)
 {
 	int	x;
 	int	y;
 
-	x = (px / flag);
-	y = (py / flag);
-	ft_putnbr_fd(x, 1);
-	ft_putnbr_fd(y, 1);
-	if (x < 0 || y < 0 || x > WIDTH || y > HEIGH)
+	x = ((double)px / scale);
+	y = ((double)py / scale);
+	if (x < 0 || y < 0 || x * scale >= WIDTH || y * scale >= HEIGH)
 		return (true);
 		if (cub->info->map[y][x] == '1')
 			return (true);
