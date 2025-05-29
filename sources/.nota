@@ -1,0 +1,63 @@
+int is_wall(int **map, int width, int height, int x, int y) {
+    if (x < 0 || y < 0 || x >= width || y >= height) return 1; // Treat out-of-bounds as solid
+    return map[y][x] != 0;
+}
+
+// Attempt to move with diagonal corner blocking
+void move_with_corner_collision(float *posX, float *posY, float deltaX, float deltaY) {
+    float nextX = *posX + deltaX;
+    float nextY = *posY + deltaY;
+
+    int fromX = (int)(*posX);
+    int fromY = (int)(*posY);
+    int toX = (int)(nextX);
+    int toY = (int)(nextY);
+
+    int solid_diag = 0;
+
+    // Detect diagonal movement
+    if (fromX != toX && fromY != toY) {
+        // Diagonal movement: check if both adjacent cardinal tiles are solid
+        if (is_wall(map, mapWidth, mapHeight, toX, fromY) &&
+            is_wall(map, mapWidth, mapHeight, fromX, toY)) {
+            solid_diag = 1; // Disallow movement
+        }
+    }
+
+    if (solid_diag) return; // Cancel movement
+
+    // Normal axis-separated movement with wall checks
+    if (!is_wall(map, mapWidth, mapHeight, toX, fromY)) {
+        *posX = nextX;
+    }
+    if (!is_wall(map, mapWidth, mapHeight, toX, toY)) {
+        *posY = nextY;
+    }
+}
+
+
+
+
+bool _colision(t_cub *cub)
+{
+	
+	float new_posx = cub->info->x/* posicao inicialde x */  /* cub->rays->mapx */ + cub->rays->deltadistx;
+	float new_posy = cub->info->y /* posicao inicialde y */  /* cub->rays->mapy */ + cub->rays->deltadisty;
+
+	int initial_posx = (int)cub->info->x; // converto para saber em que cordenada da matriz estamos x
+	int initial_posy = (int)cub->info->y;// converto para saber em que cordenada da matriz estamos y
+	
+	int final_posx = (int)new_posx;
+	int final_posy = (int)new_posy;
+	
+	int allow_movement = 0;
+	
+	if (initial_posx != final_posx && initial_posy != final_posy)
+	{
+		if (is_wall(cub, initial_posx , final_posy, BLOCK_SCALE) && is_wall(cub, final_posx , initial_posy, BLOCK_SCALE) )
+			allow_movement = 1;
+	}
+	if (allow_movement == 1)
+		return (false);
+	return (true);
+}

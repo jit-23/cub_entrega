@@ -6,7 +6,7 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 15:25:17 by mloureir          #+#    #+#             */
-/*   Updated: 2025/05/28 17:10:11 by fde-jesu         ###   ########.fr       */
+/*   Updated: 2025/05/29 15:05:14 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	draw_loop(t_cub *cub)
 {
 	move_player(cub);
 	ray_casting(cub);
-	create_minimap(cub);
+	//create_minimap(cub);
 	refresh_frames(cub);
 
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 00:12:08 by fde-jesu          #+#    #+#             */
-/*   Updated: 2025/05/28 17:25:16 by fde-jesu         ###   ########.fr       */
+/*   Updated: 2025/05/29 15:15:29 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,24 @@ void	ft_calc_ray_side(t_cub *cub, t_rays *rays)
 	}
 }
 
+static int is_wall(t_cub *cub, int x, int y, int scale)
+{
+	if (x < 0 || y < 0 || x * scale >= WIDTH || y * scale >= HEIGH)
+		return(true); // limites do mapa
+	if (cub->info->map[y][x] == '0')
+		return (false);
+	return (true);
+}
+
+
+
 bool	colision(float px, float py, t_cub *cub, int scale)
 {
 	int	x;
 	int	y;
 
-	x = ((double)px / scale);
-	y = ((double)py / scale);
+	x = ((float)px / scale);
+	y = ((float)py / scale);
 	if (x < 0 || y < 0 || x * scale >= WIDTH || y * scale >= HEIGH)
 		return (true);
 		if (cub->info->map[y][x] == '1')

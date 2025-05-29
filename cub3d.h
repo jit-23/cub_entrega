@@ -6,7 +6,7 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 08:37:02 by mloureir          #+#    #+#             */
-/*   Updated: 2025/05/28 12:22:42 by mloureir         ###   ########.pt       */
+/*   Updated: 2025/05/29 15:12:26 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -206,6 +206,7 @@ void			my_mlx_pixel_put(t_img *img, int x, int y, int color);
 void			init_rays(t_cub *cub, t_rays *rays, int i);
 void			draw_line(t_cub *cub, t_rays *rays, int i);
 bool			colision(float px, float py, t_cub *cub, int flag);
+bool			_colision(t_cub *cub);
 void			exit_msg(t_cub *cub, char *str);
 void			my_mlx_pixel_put(t_img *img, int x, int y, int color);
 void			set_null_window_vars(t_cub *cub);
