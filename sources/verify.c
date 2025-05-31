@@ -6,7 +6,7 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 10:37:34 by mloureir          #+#    #+#             */
-/*   Updated: 2025/05/31 14:06:33 by mloureir         ###   ########.pt       */
+/*   Updated: 2025/05/31 14:29:01 by mloureir         ###   ########.pt       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,16 @@ int	verify_paths(t_textures *texture)
 	return (0);
 }
 
-static void	init_player_pos(t_map *map, int x, int y)
+static void	init_player_pos(t_map *map, int x, int y, char player_chard)
 {
+	if (player_chard == 'N')
+		map->player_initial_dir = DIR_NORTH;
+	else if (player_chard == 'S')
+		map->player_initial_dir = DIR_SOUTH;
+	else if (player_chard == 'E')
+		map->player_initial_dir = DIR_EAST;
+	else if (player_chard == 'W')
+		map->player_initial_dir = DIR_WEST;
 	map->x = x * BLOCK_SCALE + (BLOCK_SCALE / 2);
 	map->y = y * BLOCK_SCALE + (BLOCK_SCALE / 2);
 	return ;
@@ -70,9 +78,8 @@ int	verify_map(t_map *map)
 		c.c = 0;
 		while (c.c < (int)ft_strlen(map->map[c.f]))
 		{
-			if (map->map[c.f][c.c] == 'N' || map->map[c.f][c.c] == 'S'
-				|| map->map[c.f][c.c] == 'W' || map->map[c.f][c.c] == 'E')
-				init_player_pos(map, c.c, c.f);
+			if (is_player(map->map[c.f][c.c]))
+				init_player_pos(map, c.c, c.f, map->map[c.f][c.c]);
 			d = map->map[c.f][c.c];
 			if (map_chars(d) == 3)
 				c.ea++;

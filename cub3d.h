@@ -6,7 +6,7 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 08:37:02 by mloureir          #+#    #+#             */
-/*   Updated: 2025/05/30 01:46:04 by fde-jesu         ###   ########.fr       */
+/*   Updated: 2025/05/31 14:32:35 by mloureir         ###   ########.pt       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,7 @@ typedef struct s_map
 	int			map_y;
 	int			map_ff_y;
 	int			map_fpos;
+	double		player_initial_dir;
 	t_colors	color[COLOR];
 	t_textures	texture[MAX_TEXTURE];
 }				t_map;
@@ -179,6 +180,7 @@ char			*jump_empty(int fd);
 void			print_debug(t_map *map);
 int				map_chars(int c);
 void			change_spaces(t_map *map);
+bool			is_player(char player_chard);	
 
 /****************************************************************/
 /*							Fernando							*/
@@ -227,8 +229,8 @@ void			cub3d(t_map *info);
 int				color(int t, int r, int g, int b);
 void			start_vars(t_map *info);
 void			set_rays_null(t_rays *ray);
-void	ft_calc_ray_side(t_cub *cub, t_rays *rays);
-void	ft_calc_dda(t_cub *cub, t_rays *rays);
+void			ft_calc_ray_side(t_cub *cub, t_rays *rays);
+void			ft_calc_dda(t_cub *cub, t_rays *rays);
 
 
 #endif

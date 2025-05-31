@@ -6,7 +6,7 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 09:32:49 by mloureir          #+#    #+#             */
-/*   Updated: 2025/05/21 02:49:28 by fde-jesu         ###   ########.fr       */
+/*   Updated: 2025/05/31 14:26:49 by mloureir         ###   ########.pt       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,11 @@
 # define WIDTH 800
 # define HEIGH 600
 # define PIXEL 32
+
+# define DIR_NORTH -PI / 2
+# define DIR_SOUTH PI / 2
+# define DIR_WEST PI
+# define DIR_EAST 0
 
 # define NORTH_TEXTURE 1
 # define SOUTH_TEXTURE 2
