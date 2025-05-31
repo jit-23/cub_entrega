@@ -6,7 +6,7 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 08:37:02 by mloureir          #+#    #+#             */
-/*   Updated: 2025/05/31 14:32:35 by mloureir         ###   ########.pt       */
+/*   Updated: 2025/05/31 14:46:35 by mloureir         ###   ########.pt       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -231,6 +231,5 @@ void			start_vars(t_map *info);
 void			set_rays_null(t_rays *ray);
 void			ft_calc_ray_side(t_cub *cub, t_rays *rays);
 void			ft_calc_dda(t_cub *cub, t_rays *rays);
-
 
 #endif
