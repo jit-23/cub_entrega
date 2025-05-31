@@ -1,5 +1,5 @@
 #Compile Options
-NAME = cub3d
+NAME = cub3D
 CC = cc
 CFLAGS = -g -Wall -Wextra -Werror
 MLXFLAGS = -L/usr/X11R6/lib -lX11 -lXext -lm

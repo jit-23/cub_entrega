@@ -6,7 +6,7 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 15:37:26 by mloureir          #+#    #+#             */
-/*   Updated: 2025/05/24 02:01:34 by fde-jesu         ###   ########.fr       */
+/*   Updated: 2025/05/31 13:59:27 by mloureir         ###   ########.pt       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,9 @@ int	get_map(t_map *map, char *map_dir)
 	map->map_y = count_map(fd);
 	close(fd);
 	if (map->map_y <= 0)
+	{
+		printf("No map\n");
 		return (1);
+	}
 	return (0);
 }

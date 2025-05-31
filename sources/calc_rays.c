@@ -6,7 +6,7 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 00:12:08 by fde-jesu          #+#    #+#             */
-/*   Updated: 2025/05/31 13:38:38 by fde-jesu         ###   ########.fr       */
+/*   Updated: 2025/05/31 13:52:03 by mloureir         ###   ########.pt       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@ void	init_rays(t_cub *cub, t_rays *rays, int i)
 {
 	rays->mapx = (int)cub->info->x;
 	rays->mapy = (int)cub->info->y;
-	rays->dirx = cos(cub->angle); 
+	rays->dirx = cos(cub->angle);
 	rays->diry = sin(cub->angle);
 	rays->raydirx = rays->dirx + ((-rays->diry * tan((PI / 6))) * ((i << 1)
 				/ (double)WIDTH - 1));
 	rays->raydiry = rays->diry + ((rays->dirx * tan((PI / 6))) * ((i << 1)
-				/ (double)WIDTH - 1)); 
+				/ (double)WIDTH - 1));
 	rays->deltadistx = sqrt(1 + (rays->raydiry * rays->raydiry)
 			/ (pow(rays->raydirx, 2)));
 	rays->deltadisty = sqrt(1 + (rays->raydirx * rays->raydirx)
@@ -80,7 +80,7 @@ bool	colision(float px, float py, t_cub *cub, int scale)
 {
 	int	x;
 	int	y;
-	
+
 	x = ((float)px / scale);
 	y = ((float)py / scale);
 	if (x < 0 || y < 0)

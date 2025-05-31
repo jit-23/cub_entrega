@@ -6,7 +6,7 @@
 /*   By: mloureir <mloureir@42porto.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 10:34:25 by mloureir          #+#    #+#             */
-/*   Updated: 2025/04/30 14:09:57 by mloureir         ###   ########.pt       */
+/*   Updated: 2025/05/31 13:57:19 by mloureir         ###   ########.pt       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,10 @@ int	check_content(char *map_dir)
 	}
 	close(fd);
 	if (check_counters(&count) != 0)
+	{
+		printf("Missing or extra identifiers\n");
 		return (1);
+	}
 	else
 		return (0);
 }
