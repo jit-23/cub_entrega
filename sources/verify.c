@@ -6,7 +6,7 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 10:37:34 by mloureir          #+#    #+#             */
-/*   Updated: 2025/05/31 14:29:01 by mloureir         ###   ########.pt       */
+/*   Updated: 2025/05/31 15:31:17 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,13 +55,13 @@ int	verify_paths(t_textures *texture)
 static void	init_player_pos(t_map *map, int x, int y, char player_chard)
 {
 	if (player_chard == 'N')
-		map->player_initial_dir = DIR_NORTH;
+		map->player_initial_dir = -PI / 2;
 	else if (player_chard == 'S')
-		map->player_initial_dir = DIR_SOUTH;
+		map->player_initial_dir = PI / 2;
 	else if (player_chard == 'E')
-		map->player_initial_dir = DIR_EAST;
+		map->player_initial_dir = -PI;
 	else if (player_chard == 'W')
-		map->player_initial_dir = DIR_WEST;
+		map->player_initial_dir = 0;
 	map->x = x * BLOCK_SCALE + (BLOCK_SCALE / 2);
 	map->y = y * BLOCK_SCALE + (BLOCK_SCALE / 2);
 	return ;

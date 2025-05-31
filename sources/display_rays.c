@@ -6,7 +6,7 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 19:08:41 by fde-jesu          #+#    #+#             */
-/*   Updated: 2025/05/31 13:53:39 by mloureir         ###   ########.pt       */
+/*   Updated: 2025/05/31 15:28:07 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ray_casting(t_cub *cub)
 	float	start_x;
 	int		i;
 
-	fraction = PI / 3 / WIDTH + 10;
+	fraction = PI / 3 / WIDTH;
 	start_x = cub->angle - PI / 6;
 	i = -1;
 	while (++i < WIDTH)

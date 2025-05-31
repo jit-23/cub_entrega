@@ -6,7 +6,7 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 00:12:08 by fde-jesu          #+#    #+#             */
-/*   Updated: 2025/05/31 13:36:35 by fde-jesu         ###   ########.fr       */
+/*   Updated: 2025/05/31 15:28:54 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,9 @@ void	ft_calc_dist_wall(t_cub *cub, t_rays *rays)
 		rays->perpwalldist = (rays->mapx - cub->info->x + (1 - rays->stepx) / 2)
 			/ rays->raydirx;
 		if (rays->raydirx > 0)
-			cub->texture2apply = WEST_TEXTURE;
-		else
 			cub->texture2apply = EAST_TEXTURE;
+		else
+			cub->texture2apply = WEST_TEXTURE;
 	}
 	else
 	{

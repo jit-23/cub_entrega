@@ -6,7 +6,7 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 00:13:55 by fde-jesu          #+#    #+#             */
-/*   Updated: 2025/05/31 10:42:00 by mloureir         ###   ########.pt       */
+/*   Updated: 2025/05/31 15:31:36 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,4 +79,12 @@ void	move_player_utils(t_cub *cub, float _cos, float _sin)
 		cub->info->x += _sin * cub->speed;
 		cub->info->y -= _cos * cub->speed;
 	}
+}
+
+bool	is_player(char player_chard)
+{
+	if (player_chard == 'N' || player_chard == 'S'\
+		|| player_chard == 'W' || player_chard == 'E')
+		return (true);
+	return (false);
 }

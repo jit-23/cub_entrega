@@ -6,7 +6,7 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/24 04:46:31 by fde-jesu          #+#    #+#             */
-/*   Updated: 2025/05/31 14:32:52 by mloureir         ###   ########.pt       */
+/*   Updated: 2025/05/31 15:16:42 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,12 +72,4 @@ void	set_rays_null(t_rays *ray)
 	ray->step = 0;
 	ray->texpos = 0;
 	set_rays_null2(ray);
-}
-
-bool	is_player(char player_chard)
-{
-	if (player_chard == 'N' || player_chard == 'S'\
-		|| player_chard == 'W' || player_chard == 'E')
-		return (true);
-	return (false);
 }
