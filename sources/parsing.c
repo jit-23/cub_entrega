@@ -6,7 +6,7 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 10:49:45 by mloureir          #+#    #+#             */
-/*   Updated: 2025/05/31 10:40:28 by mloureir         ###   ########.pt       */
+/*   Updated: 2025/05/31 12:20:14 by mloureir         ###   ########.pt       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,11 +52,11 @@ int	get_color(t_colors *colors, char *map_dir)
 		return (1);
 	return (0);
 } */
-static int	flood_fill_check(t_map *info, int x, int y, int flag)
+static int	flood_fill_check(t_map *info, size_t x, size_t y)
 {
 	static int	_flag;
 
-	if (x < 0 || y < 0 || y >= info->map_ff_y || x >= ft_strlen(info->map_ff[0]))
+	if (x < 0 || y < 0 || (int) y >= info->map_ff_y || x >= ft_strlen(info->map_ff[0]))
 	{
 		printf("nah\n");
 		_flag++;
@@ -76,10 +76,10 @@ static int	flood_fill_check(t_map *info, int x, int y, int flag)
 	}
 	info->map_ff[y][x] = '1'; // Mark cell as visited
 	// Recursive flood fill
-	flood_fill_check(info, x + 1, y, 1);
-	flood_fill_check(info, x - 1, y,2 );
-	flood_fill_check(info, x, y + 1,3);
-	flood_fill_check(info, x, y - 1,4 );
+	flood_fill_check(info, x + 1, y);
+	flood_fill_check(info, x - 1, y);
+	flood_fill_check(info, x, y + 1);
+	flood_fill_check(info, x, y - 1);
 	if(_flag != 0)
 	{
 		printf("nah5\n");
