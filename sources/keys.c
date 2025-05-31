@@ -6,7 +6,7 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 00:13:55 by fde-jesu          #+#    #+#             */
-/*   Updated: 2025/05/29 15:11:46 by fde-jesu         ###   ########.fr       */
+/*   Updated: 2025/05/30 03:02:03 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,20 +62,20 @@ void	move_player_utils(t_cub *cub, float _cos, float _sin)
 		cub->info->x += _cos * cub->speed;
 		cub->info->y += _sin * cub->speed;
 	}
-	if ((cub->k_down) && !colision(cub->info->x - _cos * cub->speed, cub->info->y
-			- _sin * cub->speed, cub, BLOCK_SCALE))
+	if ((cub->k_down) && !colision(cub ->info->x - _cos * cub->speed, cub->info->y
+			- _sin * cub->speed, cub, BLOCK_SCALE ))
 	{
 		cub->info->x -= _cos * cub->speed;
 		cub->info->y -= _sin * cub->speed;
 	}
-	if ((cub->k_right) && !colision(cub->info->x - _sin * cub->speed,
-			cub->info->y + _cos * cub->speed, cub, BLOCK_SCALE))
+	if ((cub->k_right) && !colision(cub ->info->x - _sin * cub->speed,
+			cub->info->y + _cos * cub->speed, cub, BLOCK_SCALE ))
 	{
 		cub->info->x -= _sin * cub->speed;
 		cub->info->y += _cos * cub->speed;
 	}
-	if ((cub->k_left) && !colision(cub->info->x + _sin * cub->speed, cub->info->y
-			- _cos * cub->speed, cub, BLOCK_SCALE))
+	if ((cub->k_left) && !colision(cub ->info->x + _sin * cub->speed, cub->info->y
+			- _cos * cub->speed, cub, BLOCK_SCALE ))
 	{
 		cub->info->x += _sin * cub->speed;
 		cub->info->y -= _cos * cub->speed;

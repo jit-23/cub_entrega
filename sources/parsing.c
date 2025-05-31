@@ -6,7 +6,7 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 10:49:45 by mloureir          #+#    #+#             */
-/*   Updated: 2025/05/29 17:03:45 by fde-jesu         ###   ########.fr       */
+/*   Updated: 2025/05/31 04:36:38 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,27 +56,36 @@ static int	flood_fill_check(t_map *info, int x, int y, int flag)
 {
 	static int _flag;
 	
-	if (x < 0 || y < 0 || y >= info->map_ff_y || x >= WIDTH/25)
+	if (x < 0 || y < 0 || y >= info->map_ff_y || x >= ft_strlen(info->map_ff[0]))
 	{
+		printf("nah\n");
 		_flag++;
 		return (1); // Out of bounds
 	}
 	if (!info->map_ff[y][x] || info->map_ff[y][x] == '#')
 	{
+		printf("nah2\n");
 		_flag++;
 		return (1);
 	}
 	if ( info->map_ff[y][x] == '1')
+	{
+		printf("nah3\n");
+		
 		return (1); // Wall or already visited
+	}
 	info->map_ff[y][x] = '1'; // Mark cell as visited
 	// Recursive flood fill
 	flood_fill_check(info, x + 1, y, 1);
-	
 	flood_fill_check(info, x - 1, y,2 );
 	flood_fill_check(info, x, y + 1,3);
 	flood_fill_check(info, x, y - 1,4 );
 	if(_flag != 0)
+	{
+		printf("nah5\n");
+
 		return (1);
+	}
 	return (0); // You can adjust this depending on your needs
 }
 
@@ -94,18 +103,31 @@ int	parser(t_map *map, char *map_dir)
 		return (1);
 	if (verify_values(map) != 0)
 		return (1);
-	//printf("map_yy -> %d\n", map->map_ff_y);
-	//for (int i = 0; map->map_ff[i]; i++)
-	//{
-	//	for (int h = 0; map->map_ff[i][h]; h++)
-	//	{
-	//		printf("%c", map->map_ff[i][h]);
-	//	}
-	//	
-	//	printf("\n");
-	//}
-	//
-	if (flood_fill_check(map, ((int)(map->x- BLOCK_SCALE/2)/BLOCK_SCALE) ,((int)(map->y- BLOCK_SCALE/2)/BLOCK_SCALE), 0) != 0)
-		return (1);
+	printf("map_yy -> %d\n", map->map_ff_y);
+	
+if (flood_fill_check(map, ((int)(map->x - BLOCK_SCALE/2)/BLOCK_SCALE) ,((int)(map->y- BLOCK_SCALE/2)/BLOCK_SCALE), 0) != 0)
+{	
+	return (1);
+	for (int i = 0; map->map_ff[i]; i++)
+	{
+		for (int h = 0; map->map_ff[i][h]; h++)
+		{
+			printf("%c", map->map_ff[i][h]);
+		}
+	
+		printf("\n");
+	}
+
+}	
+for (int i = 0; i < map->map_ff_y; i++)
+{
+	for (int h = 0; map->map_ff[i][h]; h++)
+	{
+		printf("%c", map->map_ff[i][h]);
+	}
+	
+	printf("\n");
+}
+	//return (1);
 	return (0);
 }

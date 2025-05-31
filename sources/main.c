@@ -6,7 +6,7 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 08:36:09 by mloureir          #+#    #+#             */
-/*   Updated: 2025/05/29 15:37:33 by fde-jesu         ###   ########.fr       */
+/*   Updated: 2025/05/30 03:03:53 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	move_player(t_cub *cub)
 	float	cos_angl;
 	float	sin_angl;
 
-	angle_speed = 0.011;
+	angle_speed = 0.02;
 	sin_angl = sin(cub->angle);
 	cos_angl = cos(cub->angle);
 	if (cub->left_r)

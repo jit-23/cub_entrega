@@ -6,7 +6,7 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 00:10:02 by fde-jesu          #+#    #+#             */
-/*   Updated: 2025/05/28 12:22:29 by mloureir         ###   ########.pt       */
+/*   Updated: 2025/05/31 03:36:25 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	set_player_atributes(t_cub *cub)
 	//cub->info->x = WIDTH / 2;
 	//cub->info->y = HEIGH / 2;
 	cub->angle = PI / 2;
-	cub->speed = 1.3;
+	cub->speed = 2.3;
 }
 
 void	init_cub(t_cub *cub)
