@@ -6,7 +6,7 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 00:12:08 by fde-jesu          #+#    #+#             */
-/*   Updated: 2025/05/31 10:38:42 by mloureir         ###   ########.pt       */
+/*   Updated: 2025/05/31 13:36:35 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,6 @@ void	handle_texture_calcs(t_cub *cub, t_rays *rays)
 		calc_text_wall_pixel(cub, rays, WEST_TEXTURE);
 }
 
-	//printf("rays->perpwalldist = %f\n", rays->perpwalldist);
-	//printf("rays->lineheight = %f\n", rays->lineheight);
 void	ft_calc_draw_limitations_for_walls(t_cub *cub, t_rays *rays)
 {
 	rays->lineheight = (BLOCK_SCALE * HEIGH) / rays->perpwalldist;
@@ -58,15 +56,6 @@ void	ft_calc_draw_limitations_for_walls(t_cub *cub, t_rays *rays)
 // conserta as direcoes para aplicar textura nortes e sul e e w
 void	ft_calc_dist_wall(t_cub *cub, t_rays *rays)
 {
-	//printf("rays->mapx -> %d\n", rays->mapx);
-	//printf("- cub->info->x -> %f\n", - cub->info->x);
-	//printf("rays->stepx) -> %d\n", rays->stepx);
-//
-	//printf("(1 - rays->stepx) -> %d\n", (1 - rays->stepx));
-	//printf("------------------\n");
-	//printf("rays->mapx - cub->info->x + (1 - rays->stepx) = %f\n", rays->mapx - cub->info->x + (1 - rays->stepx));
-	//printf("primeira parte -> %f\n", (rays->mapx - cub->info->x + (1 - rays->stepx) / 2));
-	//printf("segunda parte -> %f\n", rays->raydirx);
 	if (rays->side == 0)
 	{
 		rays->perpwalldist = (rays->mapx - cub->info->x + (1 - rays->stepx) / 2)
