@@ -6,7 +6,7 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 08:36:09 by mloureir          #+#    #+#             */
-/*   Updated: 2025/05/30 03:03:53 by fde-jesu         ###   ########.fr       */
+/*   Updated: 2025/05/31 10:40:55 by mloureir         ###   ########.pt       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,4 +93,3 @@ int	main(int argc, char **argv)
 	cub3d(&info);
 	free_all(&info);
 }
-

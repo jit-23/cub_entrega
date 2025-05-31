@@ -6,7 +6,7 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 00:12:08 by fde-jesu          #+#    #+#             */
-/*   Updated: 2025/05/28 10:45:51 by fde-jesu         ###   ########.fr       */
+/*   Updated: 2025/05/31 10:38:42 by mloureir         ###   ########.pt       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,8 @@ void	ft_calc_dist_wall(t_cub *cub, t_rays *rays)
 	//printf("segunda parte -> %f\n", rays->raydirx);
 	if (rays->side == 0)
 	{
-		rays->perpwalldist = (rays->mapx - cub->info->x + (1 - rays->stepx) / 2) / rays->raydirx;
-
+		rays->perpwalldist = (rays->mapx - cub->info->x + (1 - rays->stepx) / 2)
+			/ rays->raydirx;
 		if (rays->raydirx > 0)
 			cub->texture2apply = WEST_TEXTURE;
 		else
