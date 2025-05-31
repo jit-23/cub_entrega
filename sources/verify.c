@@ -6,7 +6,7 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 10:37:34 by mloureir          #+#    #+#             */
-/*   Updated: 2025/05/28 12:21:06 by mloureir         ###   ########.pt       */
+/*   Updated: 2025/05/31 12:38:15 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,8 @@ int	verify_map(t_map *map)
 		c.c = 0;
 		while (c.c < (int)ft_strlen(map->map[c.f]))
 		{
-			if (map->map[c.f][c.c] == 'N')
+			if (map->map[c.f][c.c] == 'N' || map->map[c.f][c.c] == 'S'
+				|| map->map[c.f][c.c] == 'W' || map->map[c.f][c.c] == 'E')
 				init_player_pos(map, c.c, c.f);
 			d = map->map[c.f][c.c];
 			if (map_chars(d) == 3)
