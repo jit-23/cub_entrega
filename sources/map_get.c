@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "../cub3d.h"
+#include <unistd.h>
 
 void	gnl_finish(int fd, char *buffer)
 {
@@ -69,7 +70,7 @@ int	get_map(t_map *map, char *map_dir)
 	close(fd);
 	if (map->map_y <= 0)
 	{
-		printf("No map\n");
+		ft_putstr_fd("No map", STDERR_FILENO);
 		return (1);
 	}
 	return (0);

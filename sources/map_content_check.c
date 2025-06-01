@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "../cub3d.h"
+#include <unistd.h>
 
 void	add_counter(char *buffer, t_counters *count)
 {
@@ -57,7 +58,7 @@ int	check_content(char *map_dir)
 	close(fd);
 	if (check_counters(&count) != 0)
 	{
-		printf("Missing or extra identifiers\n");
+		ft_putstr_fd("Missing or extra identifiers\n", STDERR_FILENO);
 		return (1);
 	}
 	else

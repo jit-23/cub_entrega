@@ -39,12 +39,12 @@ int	verify_paths(t_textures *texture)
 	{
 		if (open(texture[i].path, O_RDONLY) == -1)
 		{
-			printf("%s has no texture\n", texture[i].identifier);
+			printf("No texture found\n", STDERR_FILENO);
 			return (1);
 		}
 		if (check_xpm(texture[i].path) != 0)
 		{
-			printf("%s texture is in the wrong format", texture[i].identifier);
+			ft_putstr_fd("Texture is in the wrong format\n", STDERR_FILENO);
 			return (1);
 		}
 		i++;

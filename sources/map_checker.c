@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "../cub3d.h"
+#include <unistd.h>
 
 int	ft_strlen_slash(char *str)
 {
@@ -63,7 +64,7 @@ int	check_errs(char *map_dir)
 
 	if (check_dotfile(map_dir) != 0)
 	{
-		printf("No .cub");
+		ft_putstr_fd("No .cub", STDERR_FILENO);
 		return (1);
 	}
 	tmp_fd = open(map_dir, O_RDONLY);
