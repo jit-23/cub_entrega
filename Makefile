@@ -35,6 +35,7 @@ SRC = sources/main.c\
 		sources/utils4.c\
 		sources/draw_utils.c\
 		sources/mini_map_utils.c\
+#		sources/verify_wall_quality.c\
 # Commands
 RM = rm -rf
 OBJ = $(SRC:.c=.o)

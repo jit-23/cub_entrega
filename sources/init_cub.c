@@ -6,7 +6,7 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 00:10:02 by fde-jesu          #+#    #+#             */
-/*   Updated: 2025/05/31 15:10:54 by fde-jesu         ###   ########.fr       */
+/*   Updated: 2025/06/01 03:02:31 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int	init_textures(t_cub *cub)
 void	set_player_atributes(t_cub *cub)
 {
 	cub->angle = cub->info->player_initial_dir;
-	cub->speed = 2.3;
+	cub->speed = 0.5;
 }
 
 void	init_cub(t_cub *cub)

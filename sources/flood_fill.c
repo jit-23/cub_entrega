@@ -6,7 +6,7 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 09:20:35 by mloureir          #+#    #+#             */
-/*   Updated: 2025/05/31 15:43:26 by fde-jesu         ###   ########.fr       */
+/*   Updated: 2025/06/01 03:04:04 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,27 +24,6 @@ int	get_big_x(t_map *map)
 		c.c++;
 	}
 	return (c.we);
-}
-
-char	*get_map_copy(char **map, t_map *map)
-{
-	t_counters	c;
-	char		**c_map;
-
-	start_counters(&c);
-	c_map = ft_calloc(map->map_y + 1, sizeof(char *));
-	while (c.f < map->map_y)
-	{
-		c.ea = 0;
-		c_map[c.f] = ft_calloc(c.c + 1, sizeof(char));
-		while (map[c.f][c.ea])
-		{
-			c_map[c.f][c.ea] = c_map[c.f][c.ea];
-			c.ea++;
-		}
-		c.f++;
-	}
-	return (c_map);
 }
 
 void	get_ff_map(t_map *map)

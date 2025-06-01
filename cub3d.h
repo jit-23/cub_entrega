@@ -6,7 +6,7 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 08:37:02 by mloureir          #+#    #+#             */
-/*   Updated: 2025/05/31 14:46:35 by mloureir         ###   ########.pt       */
+/*   Updated: 2025/06/01 02:53:46 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,7 @@ typedef struct s_map
 	float		y;
 	char		**map;
 	char		**map_ff;
+	char		**map_wc;
 	int			map_y;
 	int			map_ff_y;
 	int			map_fpos;
@@ -180,7 +181,7 @@ char			*jump_empty(int fd);
 void			print_debug(t_map *map);
 int				map_chars(int c);
 void			change_spaces(t_map *map);
-bool			is_player(char player_chard);	
+bool			is_player(char player_chard);
 
 /****************************************************************/
 /*							Fernando							*/
@@ -208,7 +209,6 @@ void			my_mlx_pixel_put(t_img *img, int x, int y, int color);
 void			init_rays(t_cub *cub, t_rays *rays, int i);
 void			draw_line(t_cub *cub, t_rays *rays, int i);
 bool			colision(float px, float py, t_cub *cub, int flag);
-bool			_colision(t_cub *cub);
 void			exit_msg(t_cub *cub, char *str);
 void			my_mlx_pixel_put(t_img *img, int x, int y, int color);
 void			set_null_window_vars(t_cub *cub);

@@ -6,7 +6,7 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 10:49:45 by mloureir          #+#    #+#             */
-/*   Updated: 2025/05/31 15:38:12 by fde-jesu         ###   ########.fr       */
+/*   Updated: 2025/06/01 03:04:21 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,15 +38,9 @@ static int	flood_fill_check(t_map *info, int x, int y)
 
 	if (x < 0 || y < 0 || y >= info->map_ff_y || x
 		>= (int)ft_strlen(info->map_ff[0]))
-	{
-		_flag++;
-		return (1);
-	}
+		return (_flag++, 1);
 	if (!info->map_ff[y][x] || info->map_ff[y][x] == '#')
-	{
-		_flag++;
-		return (1);
-	}
+		return (_flag++, 1);
 	if (info->map_ff[y][x] == '1')
 		return (1);
 	info->map_ff[y][x] = '1';
@@ -54,10 +48,12 @@ static int	flood_fill_check(t_map *info, int x, int y)
 	flood_fill_check(info, x - 1, y);
 	flood_fill_check(info, x, y + 1);
 	flood_fill_check(info, x, y - 1);
+	flood_fill_check(info, x + 1, y + 1);
+	flood_fill_check(info, x - 1, y - 1);
+	flood_fill_check(info, x - 1, y + 1);
+	flood_fill_check(info, x + 1, y - 1);
 	if (_flag != 0)
-	{
 		return (1);
-	}
 	return (0);
 }
 
@@ -78,7 +74,5 @@ int	parser(t_map *map, char *map_dir)
 	if (flood_fill_check(map, ((int)(map->x - BLOCK_SCALE / 2) / BLOCK_SCALE),
 		((int)(map->y - BLOCK_SCALE / 2) / BLOCK_SCALE)) != 0)
 		return (ft_putstr_fd("Map ins't closed\n", 2), 1);
-	if (wall_viability(map) != 0)
-		return (ft_putstr_fd("Map has weak wall structure\n", 2), 1);
 	return (0);
 }
