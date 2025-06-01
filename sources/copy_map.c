@@ -6,7 +6,7 @@
 /*   By: mloureir <mloureir@42porto.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 16:11:12 by mloureir          #+#    #+#             */
-/*   Updated: 2025/05/16 14:46:08 by mloureir         ###   ########.pt       */
+/*   Updated: 2025/06/01 14:37:18 by mloureir         ###   ########.pt       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,10 @@ int	copy_map(t_map *map, char *map_dir)
 		buffer = get_next_line(fd);
 	}
 	if (paste_map(fd, map) != 0)
+	{
+		ft_putstr_fd("Invalid map\n", STDERR_FILENO);
 		return (1);
+	}
 	close(fd);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 10:49:45 by mloureir          #+#    #+#             */
-/*   Updated: 2025/06/01 03:04:21 by fde-jesu         ###   ########.fr       */
+/*   Updated: 2025/06/01 14:27:12 by mloureir         ###   ########.pt       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,6 @@ int	parser(t_map *map, char *map_dir)
 		return (1);
 	if (flood_fill_check(map, ((int)(map->x - BLOCK_SCALE / 2) / BLOCK_SCALE),
 		((int)(map->y - BLOCK_SCALE / 2) / BLOCK_SCALE)) != 0)
-		return (ft_putstr_fd("Map ins't closed\n", 2), 1);
+		return (ft_putstr_fd("Map isn't closed\n", 2), 1);
 	return (0);
 }

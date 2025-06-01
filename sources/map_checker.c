@@ -6,7 +6,7 @@
 /*   By: mloureir <mloureir@42porto.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 10:34:22 by mloureir          #+#    #+#             */
-/*   Updated: 2025/05/31 14:08:48 by mloureir         ###   ########.pt       */
+/*   Updated: 2025/06/01 14:26:59 by mloureir         ###   ########.pt       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,12 +64,15 @@ int	check_errs(char *map_dir)
 
 	if (check_dotfile(map_dir) != 0)
 	{
-		ft_putstr_fd("No .cub", STDERR_FILENO);
+		ft_putstr_fd("No .cub\n", STDERR_FILENO);
 		return (1);
 	}
 	tmp_fd = open(map_dir, O_RDONLY);
 	if (tmp_fd == -1)
+	{
+		ft_putstr_fd("Map doesn't exist\n", STDERR_FILENO);
 		return (1);
+	}
 	close(tmp_fd);
 	if (check_content(map_dir) != 0)
 		return (1);

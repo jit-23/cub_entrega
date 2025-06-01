@@ -6,7 +6,7 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 08:36:09 by mloureir          #+#    #+#             */
-/*   Updated: 2025/06/01 03:03:07 by fde-jesu         ###   ########.fr       */
+/*   Updated: 2025/06/01 14:34:58 by mloureir         ###   ########.pt       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,12 +77,12 @@ int	main(int argc, char **argv)
 	start_vars(&info);
 	if (argc != 2)
 	{
-		ft_putstr_fd("Error on arguments\n", STDERR_FILENO);
+		ft_putstr_fd("Error\n", STDERR_FILENO);
 		return (1);
 	}
 	if (parser(&info, argv[1]) != 0)
 	{
-		ft_putstr_fd("Map error\n", STDERR_FILENO);
+		ft_putstr_fd("Error\n", STDERR_FILENO);
 		free_all(&info);
 		return (1);
 	}
