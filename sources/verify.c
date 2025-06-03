@@ -6,7 +6,7 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 10:37:34 by mloureir          #+#    #+#             */
-/*   Updated: 2025/06/01 02:52:04 by fde-jesu         ###   ########.fr       */
+/*   Updated: 2025/06/03 16:52:38 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	verify_paths(t_textures *texture)
 	{
 		if (open(texture[i].path, O_RDONLY) == -1)
 		{
-			printf("No texture found\n", STDERR_FILENO);
+			ft_putstr_fd("No texture found\n", STDERR_FILENO);
 			return (1);
 		}
 		if (check_xpm(texture[i].path) != 0)
