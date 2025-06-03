@@ -6,7 +6,7 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 00:12:08 by fde-jesu          #+#    #+#             */
-/*   Updated: 2025/05/31 15:28:54 by fde-jesu         ###   ########.fr       */
+/*   Updated: 2025/06/03 17:59:45 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,9 @@ void	ft_calc_draw_limitations_for_walls(t_cub *cub, t_rays *rays)
 	rays->drawend = rays->lineheight / 2 + HEIGH / 2;
 	if (rays->drawend >= HEIGH)
 		rays->drawend = HEIGH - 1;
-	if (rays->side == 0)
+	if (rays->drawend < 0)
+ 		rays->drawend = HEIGH;
+ 	if (rays->side == 0)
 		rays->xwall = cub->info->y + rays->perpwalldist * rays->raydiry;
 	else
 		rays->xwall = cub->info->x + rays->perpwalldist * rays->raydirx;

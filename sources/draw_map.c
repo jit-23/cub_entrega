@@ -6,7 +6,7 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 15:58:41 by fde-jesu          #+#    #+#             */
-/*   Updated: 2025/05/31 13:54:13 by mloureir         ###   ########.pt       */
+/*   Updated: 2025/06/03 18:00:10 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,11 @@ void	draw_line(t_cub *cub, t_rays *rays, int i)
 	}
 	column = rays->drawend;
 	while (++column < HEIGH)
+	{
+	//	printf("rays->drawend - %d\n",rays->drawend);
+	//	printf("column - %d\n",column);
 		my_mlx_pixel_put(&cub->imgs[0], i, column, cub->info->color[0].val);
+	}
 	while (rays->y < rays->drawend + 1)
 	{
 		if (cub->texture2apply == NORTH_TEXTURE)
