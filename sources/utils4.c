@@ -6,7 +6,7 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/24 04:46:31 by fde-jesu          #+#    #+#             */
-/*   Updated: 2025/05/31 15:16:42 by fde-jesu         ###   ########.fr       */
+/*   Updated: 2025/06/04 14:10:14 by mloureir         ###   ########.pt       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ void	start_vars(t_map *info)
 	i = 0;
 	while (i < COLOR)
 	{
-		info->texture[i].path = NULL;
+		info->color[i].path = NULL;
+		info->color[i].allocd = 0;
 		i++;
 	}
 }

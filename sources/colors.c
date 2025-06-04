@@ -6,11 +6,12 @@
 /*   By: mloureir <mloureir@42porto.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 09:31:02 by mloureir          #+#    #+#             */
-/*   Updated: 2025/05/16 09:31:12 by mloureir         ###   ########.pt       */
+/*   Updated: 2025/06/04 14:19:10 by mloureir         ###   ########.pt       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
+#include <unistd.h>
 
 char	*get_c_path(char *buffer)
 {
@@ -24,18 +25,25 @@ char	*get_c_path(char *buffer)
 	return (rm_nl(toret));
 }
 
-void	find_color(char *buffer, t_colors *colors)
+int	find_color(char *buffer, t_colors *colors)
 {
 	if (ft_strnstr(buffer, "F", 1))
 	{
 		colors[0].identifier = 'F';
 		colors[0].path = get_c_path(buffer);
+		colors[0].allocd = 1;
+		if (verify_color_path(colors[0].path) != 0)
+			return (1);
 	}
 	else if (ft_strnstr(buffer, "C", 1))
 	{
 		colors[1].identifier = 'C';
 		colors[1].path = get_c_path(buffer);
+		colors[1].allocd = 1;
+		if (verify_color_path(colors[1].path) != 0)	
+			return (1);
 	}
+	return (0);
 }
 
 int	startup_check(char *str)
@@ -91,12 +99,13 @@ int	seperate_colors(t_colors *colors)
 	{
 		if (check_coloms(colors[i].path, colors, i) != 0)
 		{
-			free(colors[0].path);
-			free(colors[1].path);
+			ft_putstr_fd("Invalid RGB values\n", STDERR_FILENO);
 			return (1);
 		}
 		i++;
 	}
+	colors[0].allocd = 0;
+	colors[1].allocd = 0;
 	free(colors[0].path);
 	free(colors[1].path);
 	return (0);

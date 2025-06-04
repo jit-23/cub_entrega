@@ -6,7 +6,7 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 08:37:02 by mloureir          #+#    #+#             */
-/*   Updated: 2025/06/01 02:53:46 by fde-jesu         ###   ########.fr       */
+/*   Updated: 2025/06/04 14:06:16 by mloureir         ###   ########.pt       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ typedef struct s_textures
 
 typedef struct s_colors
 {
+	int			allocd;
 	char		*path;
 	char		identifier;
 	int			val;
@@ -153,7 +154,8 @@ int				check_values(char *map_dir);
 /* parser - colors */
 
 char			*get_c_path(char *buffer);
-void			find_color(char *buffer, t_colors *colors);
+int				verify_color_path(char *str);
+int				find_color(char *buffer, t_colors *colors);
 int				startup_check(char *str);
 int				check_coloms(char *str, t_colors *colors, int i);
 int				seperate_colors(t_colors *colors);

@@ -6,7 +6,7 @@
 /*   By: mloureir <mloureir@42porto.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 13:59:21 by mloureir          #+#    #+#             */
-/*   Updated: 2025/04/30 15:13:57 by mloureir         ###   ########.pt       */
+/*   Updated: 2025/06/04 13:42:45 by mloureir         ###   ########.pt       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ int	check_values(char *map_dir)
 		if (v_checker(buffer) != 0)
 		{
 			close(fd);
+			ft_putstr_fd("Missing color or texture path\n", STDERR_FILENO);
 			free(buffer);
 			return (1);
 		}

@@ -6,7 +6,7 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 08:36:09 by mloureir          #+#    #+#             */
-/*   Updated: 2025/06/04 03:26:40 by fde-jesu         ###   ########.fr       */
+/*   Updated: 2025/06/04 14:12:32 by mloureir         ###   ########.pt       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,10 @@ void	free_all(t_map *info)
 			free(info->texture[i].path);
 		i++;
 	}
+	if (info->color[0].allocd == 1)
+		free(info->color[0].path);
+	if (info->color[1].allocd == 1)
+		free(info->color[1].path);
 	free_maps(info);
 }
 

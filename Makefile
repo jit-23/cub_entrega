@@ -1,7 +1,7 @@
 #Compile Options
 NAME = cub3D
 CC = cc
-CFLAGS = #-g -Wall -Wextra -Werror
+CFLAGS = -g -Wall -Wextra -Werror
 MLXFLAGS = -L/usr/X11R6/lib -lX11 -lXext -lm
 # Directories
 OBJ_PATH:= obj/
@@ -35,6 +35,7 @@ SRC = sources/main.c\
 		sources/utils4.c\
 		sources/draw_utils.c\
 		sources/mini_map_utils.c\
+		sources/colors_utils.c
 #		sources/verify_wall_quality.c\
 # Commands
 RM = rm -rf

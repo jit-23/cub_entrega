@@ -6,7 +6,7 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 10:37:34 by mloureir          #+#    #+#             */
-/*   Updated: 2025/06/03 16:52:38 by fde-jesu         ###   ########.fr       */
+/*   Updated: 2025/06/04 14:38:15 by mloureir         ###   ########.pt       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,6 @@ static void	init_player_pos(t_map *map, int x, int y, char player_chard)
 int	verify_map(t_map *map)
 {
 	t_counters	c;
-	int			d;
 
 	start_counters(&c);
 	while (c.f <= map->map_y)
@@ -80,17 +79,19 @@ int	verify_map(t_map *map)
 		{
 			if (is_player(map->map[c.f][c.c]))
 				init_player_pos(map, c.c, c.f, map->map[c.f][c.c]);
-			d = map->map[c.f][c.c];
-			if (map_chars(d) == 3)
+			if (map_chars(map->map[c.f][c.c]) == 3)
 				c.ea++;
-			else if (map_chars(d) == 1)
+			else if (map_chars(map->map[c.f][c.c]) == 1)
 				return (1);
 			c.c++;
 		}
 		c.f++;
 	}
 	if (c.ea != 1)
+	{
+		ft_putstr_fd("Wrong ammount of player char\n", STDERR_FILENO);
 		return (1);
+	}
 	return (0);
 }
 

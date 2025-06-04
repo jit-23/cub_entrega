@@ -6,7 +6,7 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 10:49:45 by mloureir          #+#    #+#             */
-/*   Updated: 2025/06/01 14:27:12 by mloureir         ###   ########.pt       */
+/*   Updated: 2025/06/04 14:15:41 by mloureir         ###   ########.pt       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,12 @@ int	get_color(t_colors *colors, char *map_dir)
 	buffer = get_next_line(fd);
 	while (buffer)
 	{
-		find_color(buffer, colors);
+		if (find_color(buffer, colors) != 0)
+		{
+			ft_putstr_fd("Bad color path\n", STDERR_FILENO);
+			free(buffer);
+			return (1);
+		}
 		free(buffer);
 		buffer = get_next_line(fd);
 	}

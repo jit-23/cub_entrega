@@ -6,7 +6,7 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 00:10:02 by fde-jesu          #+#    #+#             */
-/*   Updated: 2025/06/04 03:21:15 by fde-jesu         ###   ########.fr       */
+/*   Updated: 2025/06/04 16:03:21 by mloureir         ###   ########.pt       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	init_textures(t_cub *cub)
 	cub->imgs[4].img = mlx_xpm_file_to_image(cub->mlx_con,
 			cub->info->texture[2].path, &(cub->imgs[4].x), &(cub->imgs[4].y));
 	if (verify_img(cub) != 0)
-		return (1);
+		return (ft_putstr_fd("Non valid texture\n", 2), 1);
 	cub->imgs[1].addr = mlx_get_data_addr(cub->imgs[1].img, &cub->imgs[1].bpp,
 			&cub->imgs[1].size_line, &cub->imgs[1].endian);
 	cub->imgs[2].addr = mlx_get_data_addr(cub->imgs[2].img, &cub->imgs[2].bpp,
