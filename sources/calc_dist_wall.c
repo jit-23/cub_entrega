@@ -48,8 +48,8 @@ void	ft_calc_draw_limitations_for_walls(t_cub *cub, t_rays *rays)
 	if (rays->drawend >= HEIGH)
 		rays->drawend = HEIGH - 1;
 	if (rays->drawend < 0)
- 		rays->drawend = HEIGH;
- 	if (rays->side == 0)
+		rays->drawend = HEIGH;
+	if (rays->side == 0)
 		rays->xwall = cub->info->y + rays->perpwalldist * rays->raydiry;
 	else
 		rays->xwall = cub->info->x + rays->perpwalldist * rays->raydirx;

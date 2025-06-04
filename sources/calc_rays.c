@@ -6,7 +6,7 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 00:12:08 by fde-jesu          #+#    #+#             */
-/*   Updated: 2025/06/03 17:53:24 by fde-jesu         ###   ########.fr       */
+/*   Updated: 2025/06/04 03:22:40 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@ void	init_rays(t_cub *cub, t_rays *rays, int i)
 	rays->mapy = (int)cub->info->y;
 	rays->dirx = cos(cub->angle);
 	rays->diry = sin(cub->angle);
-	//printf("rays->dirx - %f\n", rays->dirx);
-	//printf("rays->diry - %f\n", rays->diry);
 	rays->raydirx = rays->dirx + ((-rays->diry * tan((PI / 6))) * ((i << 1)
 				/ (double)WIDTH - 1));
 	rays->raydiry = rays->diry + ((rays->dirx * tan((PI / 6))) * ((i << 1)
