@@ -81,7 +81,7 @@ int	main(int argc, char **argv)
 	start_vars(&info);
 	if (argc != 2)
 	{
-		ft_putstr_fd("Error\n", STDERR_FILENO);
+		ft_putstr_fd("No args\nError\n", STDERR_FILENO);
 		return (1);
 	}
 	if (parser(&info, argv[1]) != 0)

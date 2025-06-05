@@ -6,7 +6,7 @@
 /*   By: mloureir <mloureir@42porto.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 10:34:22 by mloureir          #+#    #+#             */
-/*   Updated: 2025/06/01 14:26:59 by mloureir         ###   ########.pt       */
+/*   Updated: 2025/06/05 09:11:14 by mloureir         ###   ########.pt       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,29 +33,18 @@ int	ft_strlen_slash(char *str)
 
 int	check_xpm(char *str)
 {
-	int		len;
-	char	*test;
-
-	len = ft_strlen_slash(str);
-	test = str + len - 4;
-	if (ft_strnstr(test, ".xpm", ft_strlen(test)) && len > 4)
-		return (0);
-	else
+	if (ft_strncmp(str + ft_strlen(str) - 4, ".xpm", 4) != 0)
 		return (1);
-	return (0);
+	else
+		return (0);
 }
 
 int	check_dotfile(char *map_dir)
 {
-	int		len;
-	char	*test;
-
-	len = ft_strlen_slash(map_dir);
-	test = map_dir + len - 4;
-	if (ft_strnstr(test, ".cub", ft_strlen(test)) && len > 4)
-		return (0);
-	else
+	if (ft_strncmp(map_dir + ft_strlen(map_dir) - 4, ".cub", 4) != 0)
 		return (1);
+	else
+		return (0);
 }
 
 int	check_errs(char *map_dir)
