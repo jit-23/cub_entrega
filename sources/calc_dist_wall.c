@@ -6,7 +6,7 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 00:12:08 by fde-jesu          #+#    #+#             */
-/*   Updated: 2025/06/03 17:59:45 by fde-jesu         ###   ########.fr       */
+/*   Updated: 2025/06/05 01:38:08 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ void	handle_texture_calcs(t_cub *cub, t_rays *rays)
 
 void	ft_calc_draw_limitations_for_walls(t_cub *cub, t_rays *rays)
 {
+	if (rays->perpwalldist <= 0)
+		rays->perpwalldist = 0.5;
 	rays->lineheight = (BLOCK_SCALE * HEIGH) / rays->perpwalldist;
 	rays->drawstart = -rays->lineheight / 2 + HEIGH / 2;
 	if (rays->drawstart < 0)

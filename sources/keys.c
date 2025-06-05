@@ -6,7 +6,7 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 00:13:55 by fde-jesu          #+#    #+#             */
-/*   Updated: 2025/06/03 18:24:56 by fde-jesu         ###   ########.fr       */
+/*   Updated: 2025/06/05 01:12:14 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	key_press(int kcode, t_cub *cub)
 		cub->left_r = true;
 	if (kcode == RIGHT)
 		cub->right_r = true;
-	if (kcode == 113 || kcode == 65307)
+	if (kcode == 65307)
 		end_game(cub);
 	return (0);
 }

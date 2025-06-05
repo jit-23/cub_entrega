@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   colors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mloureir <mloureir@42porto.com>            +#+  +:+       +#+        */
+/*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 09:31:02 by mloureir          #+#    #+#             */
-/*   Updated: 2025/06/04 14:19:10 by mloureir         ###   ########.pt       */
+/*   Updated: 2025/06/05 01:38:36 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	find_color(char *buffer, t_colors *colors)
 		colors[1].identifier = 'C';
 		colors[1].path = get_c_path(buffer);
 		colors[1].allocd = 1;
-		if (verify_color_path(colors[1].path) != 0)	
+		if (verify_color_path(colors[1].path) != 0)
 			return (1);
 	}
 	return (0);
